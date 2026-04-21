@@ -1,0 +1,230 @@
+
+/* إعدادات الصفحة الأساسيه*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+
+/* (Header) */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+
+/* نشيل النقط اللي جنب الكلام ونخلي القائمة بالعرض */
+nav ul {
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+    background-color: #0056b3; 
+    overflow: hidden;
+}
+
+/* نخلي العناصر تيجي جنب بعضها */
+nav li {
+    float: left; /* بيخليهم يترصوا بالعرض */
+}
+
+/* 3. تنسيق شكل اللينكات (الكلام نفسه) */
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+/*تغيير اللون لما الماوس ييجي على الكلمة */
+nav li a:hover {
+    background-color: #003d80;
+}
+
+
+.logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #004d40;
+}
+
+nav a {
+    text-decoration: none;
+    color: #666;
+    margin-left: 25px;
+    font-size: 0.9rem;
+}
+
+nav a.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+/* التقسيمة الرئيسية (Layout) */
+.main-wrapper {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 40px;
+}
+
+.grid-layout {
+    display: flex;
+    gap: 80px;
+}
+
+/* الجزء الشمال (Form) */
+.form-section {
+    flex: 2;
+}
+
+.badge {
+    color: #007bff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 10px 0 20px;
+    font-weight: 800;
+}
+
+.description {
+    color: #555;
+    margin-bottom: 40px;
+    max-width: 550px;
+}
+
+/*تنسيق inputs*/
+.input-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.field {
+    flex: 1;
+}
+
+label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    font-size: 0.95rem;
+}
+
+textarea {
+    height: 120px;
+    resize: none;
+}
+
+/* منطقة upload*/
+.upload-zone {
+    border: 2px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    margin: 30px 0;
+    color: #666;
+}
+
+.upload-zone strong { color: #007bff; }
+
+/* Submit-button*/
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* الجزء اليمين (Sidebar) */
+.sidebar {
+    flex: 1;
+}
+
+.info-card {
+    margin-bottom: 40px;
+}
+
+.info-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    border-left: 4px solid #007bff;
+    padding-left: 10px;
+}
+
+.contact-box p {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.hours-list {
+    background-color: #fcfcfc;
+    border-radius: 8px;
+}
+
+.hour-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.9rem;
+}
+
+.status-closed {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* Map*/
+.map-container {
+    height: 200px;
+    background-color: #e3effd;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-end;
+    padding: 15px;
+}
+
+.map-info {
+    background: white;
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}

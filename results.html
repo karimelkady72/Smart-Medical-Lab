@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نتائج التحاليل -</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon"> </div>
+    <div>
+      <span class="logo-text">معمل   </span>
+      <span class="logo-sub">للتحاليل الطبية</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">الرئيسية</a>
+    <a href="tests.html">التحاليل والأسعار</a>
+    <a href="services.html">الخدمات</a>
+    <a href="contact.html">تواصل معنا</a>
+    <a href="results.html" class="active">النتائج</a>
+    <a href="about.html">عن المعمل</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1> نتائج التحاليل</h1>
+  <p>أدخل رقم الحجز أو اسمك لعرض نتيجة تحليلك وتحميلها</p>
+</div>
+
+<main>
+  <div class="search-card">
+    <h2>ابحث عن نتيجتك</h2>
+    <div class="input-row">
+      <div class="field">
+        <label>رقم الحجز</label>
+        <input type="text" id="booking-id" placeholder="مثال: NL-2024-0891" />
+      </div>
+      <div class="field">
+        <label>أو اسم المريض</label>
+        <input type="text" id="patient-name" placeholder="الاسم بالكامل" />
+      </div>
+      <button class="btn-search" onclick="searchResult()"> عرض النتيجة</button>
+    </div>
+    <div id="error-msg"> لم يتم العثور على نتيجة. تأكد من رقم الحجز أو الاسم.</div>
+  </div>
+
+    </div>
+
+    <div class="action-row">
+      <button class="btn-pdf" onclick="printPage()">
+         تحميل PDF
+      </button>
+      <button class="btn-share" onclick="alert('تم نسخ الرابط!')">
+         مشاركة النتيجة
+      </button>
+      <button class="btn-share" onclick="window.print()">
+         طباعة
+      </button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  جميع الحقوق محفوظة © 2026 &nbsp;|&nbsp; <span>معمل    للتحاليل الطبية</span>
+</footer>
+

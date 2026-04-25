@@ -1,0 +1,599 @@
+/* هنا بنادي على خط "كايرو" من جوجل عشان الموقع يبقى شكله شيك وخطه واضح */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
+
+/* دي "الخزنة" اللي شايلة الألوان والضل اللي هنستخدمهم في الموقع كله عشان لو حبيت تغير لون تغيره من هنا بس */
+:root {
+  --primary-color: rgb(29, 78, 216);
+  --secondary-color: rgb(23, 37, 84);
+  --accent-color: rgb(239, 246, 255);
+  --text-dark: rgb(30, 41, 59);
+  --text-light: rgb(71, 85, 105);
+  --bg-main: rgb(248, 250, 252);
+  --white: rgb(255, 255, 255);
+  --border-color: rgb(226, 232, 240);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 20px 25px -5px rgba(29, 78, 216, 0.15);
+  --transition: all 0.3s ease-in-out;
+}
+
+/* بنصفر المسافات وبنخلي نوع الخط "كايرو" لكل عناصر الصفحة */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cairo', sans-serif;
+}
+
+/* بنخلي الصفحة تاخد الطول كله عشان الفوتر ميبقاش طاير في النص */
+html, body {
+  height: 100%;
+}
+
+/* تظبيط لون الخلفية وتوزيع المحتوى بالطول */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* بنشيل الخط اللي تحت اللينكات وبنخليها تاخد لون النص العادي */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* الناف بار (الشريط اللي فوق): بنخليه ثابت مكانه وهو اللي شايل اللوجو والمنيو */
+nav {
+  background-color: var(--white);
+  padding: 15px 5%;
+  box-shadow: var(--shadow-sm);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+}
+
+/* بنرص لينكات المنيو جنب بعضها وبنعمل مسافات بينهم */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* تظبيط شكل اللينك والسرعة بتاعة الحركة بتاعته */
+nav ul li a {
+  font-weight: 600;
+  color: var(--text-dark);
+  position: relative;
+  padding: 5px 0;
+  transition: var(--transition);
+}
+
+/* ده الخط الأزرق اللي بيظهر تحت اللينك لما تقف عليه بالماوس */
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: var(--transition);
+}
+
+/* لما الماوس ييجي على اللينك، لونه بيقلب أزرق والخط بيظهر */
+nav ul li a:hover {
+  color: var(--primary-color);
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* الجزء الأزرق المتدرج اللي فوق في كل الصفحات زي الهوم والأباوت */
+.hero, .page-header, .header, header:not(.top-nav), body > h1 {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  padding: 120px 20px 80px;
+  text-align: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-md);
+}
+
+/* تظبيط مقاس عناوين الصفحات الكبيرة */
+.hero h1, .page-header h1, .header h1, .header h2, header:not(.top-nav) h1, body > h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* الكلام اللي تحت العنوان الرئيسي في الهيدر */
+.hero p, .page-header p, .header p, header:not(.top-nav) p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* العناوين اللي في صفحة الباقات (Packages) */
+.packages h2 {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-md);
+}
+
+/* شكل مربع البحث في صفحة التحاليل: بنخليه في النص وشكله نضضيف */
+#searchInput {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 20px;
+  margin: 0 auto 40px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: var(--transition);
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+/* لما تضغط جوه مربع البحث، البرواز بتاعه بيبقى أزرق */
+#searchInput:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+/* الشكل الموحد للكروت في كل الموقع (الخلفية البيضاء والزوايا الناعمة) */
+.card, .about-card, .value-card, .package, .info-card, .health-tip, .search-card, details, .container {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+}
+
+/* حركة الكارت لما تقف عليه: بيترفع لفوق والضل بيزيد عشان يدي إحساس بالحركة */
+.card:hover, .about-card:hover, .value-card:hover, .package:hover, .info-card:hover, details:hover, .container:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-color);
+}
+
+/* شكل الزراير في الموقع كله: أزرق، الكلام أبيض، وبيكبر شوية لما تقف عليه */
+button, .btn-search, .btn-pdf, .btn-share, .cta-btns a, .right button, .card button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-block;
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* لون الزرار لما تقف عليه بالماوس */
+button:hover, .btn-search:hover, .btn-pdf:hover, .btn-share:hover, .cta-btns a:hover, .right button:hover, .card button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(29, 78, 216, 0.3);
+}
+
+/* النسخة البيضاء من الزراير */
+.btn-white {
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+/* شكل مربعات الكتابة (Inputs) في صفحة اللوجن أو الكونتكات */
+input, textarea, select {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 6px;
+  margin-bottom: 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  background-color: var(--bg-main);
+}
+
+/* لما تضغط جوه مربع الكتابة */
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+  background-color: var(--white);
+}
+
+/* العناوين اللي فوق مربعات الكتابة */
+label {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.85rem;
+}
+
+/* الشريط اللي فيه أرقام الإحصائيات في صفحة "عن المعمل" */
+.stats-strip {
+  background-color: var(--white);
+  padding: 40px 20px;
+  margin: -60px 5% 40px;
+  border-radius: 15px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+/* رص الإحصائيات جنب بعضها بشكل منظم */
+.stats-grid, .values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  text-align: center;
+}
+
+/* مقاس أرقام الإحصائيات الكبير */
+.stat-num {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* العناوين الجانبية اللي في نص الصفحات */
+.sec-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin: 40px 0 20px;
+  color: var(--text-dark);
+}
+
+/* رص الكروت جنب بعضها في صفحة الهوم والخدمات */
+.cards, .packages-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 20px 5%;
+}
+
+/* تلوين الكارت المميز بلون أزرق مختلف */
+.card.highlight {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.card.highlight h3, .card.highlight p {
+  color: var(--white);
+}
+
+/* تقسيم الداشبورد لجزئين جنب بعض */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 20px 5%;
+}
+
+/* شريط النسبة المئوية (البروجرس بار) في الداشبورد */
+.bar {
+  background-color: var(--border-color);
+  border-radius: 10px;
+  height: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+/* الجزء المليان من شريط النسبة ولونه أزرق */
+.fill {
+  background-color: var(--primary-color);
+  height: 100%;
+  border-radius: 10px;
+  transition: width 1s ease-in-out;
+}
+
+/* بنود النشاط الأخير في الداشبورد */
+.activity-item {
+  padding: 12px;
+  border-left: 4px solid var(--primary-color);
+  background: var(--accent-color);
+  margin-bottom: 12px;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.85rem;
+  transition: var(--transition);
+}
+
+/* حركة بسيطة لما تقف على بند النشاط */
+.activity-item:hover {
+  transform: translateX(8px);
+}
+
+/* الحاوية الكبيرة اللي شايلا صفحة اللوجن أو الفورمز */
+.container {
+  display: flex;
+  max-width: 1000px;
+  margin: 100px auto 50px;
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* الجزء اللي على الشمال في صفحة اللوجن (اللي فيه اللون) */
+.container .left {
+  flex: 1;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* الجزء اللي على اليمين في صفحة اللوجن (اللي فيه الفورم) */
+.container .right {
+  flex: 1;
+  padding: 50px;
+}
+
+/* البوكسات الصغيرة اللي فيها مميزات جوه صفحة اللوجن */
+.features .box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  transition: var(--transition);
+}
+
+.features .box:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* جملة "معندكش حساب؟" اللي تحت زرار اللوجن */
+.switch {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.switch a {
+  color: var(--primary-color);
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.switch a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* بنخلي الجزء الرئيسي يملى المساحة الفاضية */
+main {
+  flex: 1;
+}
+
+/* تظبيط عرض السكشنات عشان متفتحش بزيادة في الشاشات الكبيرة */
+main section {
+  max-width: 800px;
+  margin: 0 auto 30px;
+}
+
+/* القوائم المنسدلة (الأسئلة الشائعة أو الخدمات) */
+details {
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+/* العنوان بتاع القائمة المنسدلة */
+summary h2 {
+  display: inline;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* تظبيط شكل السهم أو العلامة في القائمة المنسدلة */
+summary {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  outline: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* علامة الزائد اللي بتظهر في القائمة */
+summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  transition: var(--transition);
+}
+
+/* لما تفتح القائمة، علامة الزائد بتبقى ناقص */
+details[open] summary::after {
+  content: '-';
+  transform: rotate(180deg);
+}
+
+/* الكلام اللي جوه القائمة المنسدلة */
+details p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+/* تظبيط الليبلز جوه القائمة */
+details label {
+  font-size: 0.8rem;
+}
+
+/* تصغير مربعات الكتابة شوية جوه القائمة المنسدلة */
+details input, details textarea, details select {
+  font-size: 0.85rem;
+  padding: 8px 12px;
+}
+
+/* أنيميشن ناعم لما القائمة تتفتح */
+details p, details form {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* تقسيم الصفحة لعمودين (زي صفحة النتائج أو الكونتاكت) */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  padding: 40px 5%;
+}
+
+/* رص الحقول جنب بعضها في صف واحد */
+.input-row {
+  display: flex;
+  gap: 20px;
+}
+
+.input-row .field {
+  flex: 1;
+}
+
+/* مكان رفع الملفات (الروشتات) وبروازه المنقط */
+.upload-zone {
+  border: 2px dashed var(--primary-color);
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: var(--accent-color);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+/* لما تشد ملف وترميه في المنطقة دي */
+.upload-zone:hover {
+  background-color: rgb(191, 219, 254);
+  transform: scale(1.02);
+}
+
+/* كارت البحث الصغير في صفحة النتائج */
+.search-card {
+  max-width: 700px;
+  margin: -50px auto 40px;
+  position: relative;
+  z-index: 10;
+}
+
+/* تظبيط مكان الزراير في السطر */
+.action-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+/* الحاوية اللي شايلا الخريطة والبرواز بتاعها */
+.map-container {
+  margin-top: 20px;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  background: var(--white);
+}
+
+/* لما تقف بالماوس على برواز الخريطة */
+.map-container:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+/* الخريطة نفسها */
+.map-container iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  display: block;
+}
+
+/* العنوان اللي فوق الخريطة */
+.map-info {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* الفوتر (الشريط اللي تحت): أزرق متدرج وبيفضل لزقان تحت خالص */
+footer, .footer {
+  margin-top: auto;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  text-align: center;
+  padding: 35px 20px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  border-top: none;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* تظبيط شكل اللينكات جوه الفوتر */
+footer a, .footer-links a {
+  color: var(--accent-color);
+  margin: 0 10px;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+footer a:hover, .footer-links a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+/* تظبيط شكل الموقع على الموبايل: بنخلي كل حاجة تترص تحت بعضها بدل ما هي جنب بعض */
+@media (max-width: 768px) {
+  .dashboard, .grid-layout, .container {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+  
+  .input-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .stats-strip {
+    margin-top: 20px;
+  }
+
+  /* تصغير العناوين شوية على الموبايل عشان متبقاش ضخمة */
+  .hero h1, .page-header h1, .header h1, header:not(.top-nav) h1, body > h1 {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,99 @@
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- عنوان الصفحة اللي بيظهر في التاب -->
+  <title>Tests & Prices</title>
+
+  <!-- ربط ملف التصميم العام للموقع -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- الناف بار عشان التنقل بين صفحات الموقع -->
+<nav>
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="tests.html">Tests & Prices</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="login.html">Login</a></li>
+    </ul>
+</nav>
+
+<!-- عنوان الصفحة الرئيسي اللي بيوضح محتواها -->
+<h1>Laboratory Tests</h1>
+
+<!-- مربع البحث عشان المستخدم يدور على تحليل معين -->
+<input type="text" id="searchInput" placeholder="Search ......">
+
+<!-- هنا المفروض يتعرضوا كروت التحاليل بشكل ديناميكي (حالياً فاضي) -->
+<div class="cards">
+</div>
+
+<!-- سيكشن الباكدجات الجاهزة من التحاليل -->
+<section class="packages">
+
+  <!-- عنوان السيكشن -->
+  <h2>Test Packages</h2>
+
+  <!-- الكونتينر اللي شايل كل الكروت -->
+  <div class="packages-cards">
+
+    <!-- كارت تحليل وظائف الكبد -->
+    <div class="package">
+      <span class="price">EGP 450</span>
+      <h3>Liver Profile</h3>
+      <p>A group of tests to check liver health and function</p>
+      <button>Book Now</button>
+    </div>
+
+    <!-- كارت السكر التراكمي -->
+    <div class="package">
+      <span class="price">EGP 350</span>
+      <h3>HbA1c</h3>
+      <p>Measures average blood sugar levels over the past 3 months</p>
+      <button>Book Now</button>
+    </div>
+
+    <!-- صورة دم كاملة -->
+    <div class="package">
+      <span class="price">EGP 250</span>
+      <h3>Complete Blood Count (CBC)</h3>
+      <p>A comprehensive test for blood components</p>
+      <button>Book Now</button>
+    </div>
+
+    <!-- دهون الدم -->
+    <div class="package">
+      <span class="price">EGP 380</span>
+      <h3>Lipid Profile</h3>
+      <p>Measures cholesterol and blood lipids</p>
+      <button>Book Now</button>
+    </div>
+
+    <!-- فيتامين د -->
+    <div class="package">
+      <span class="price">EGP 600</span>
+      <h3>Vitamin D</h3>
+      <p>Measures Vitamin D levels in the body</p>
+      <button>Book Now</button>
+    </div>
+
+    <!-- تحليل الغدة الدرقية -->
+    <div class="package">
+      <span class="price">EGP 300</span>
+      <h3>TSH (Thyroid Stimulating Hormone)</h3>
+      <p>Analyzes thyroid gland activity</p>
+      <button>Book Now</button>
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>

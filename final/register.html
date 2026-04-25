@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- عنوان الصفحة -->
+    <title>Register</title>
+
+    <!-- ربط ملف الستايل -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- شريط التنقل بين صفحات الموقع -->
+<nav>
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="tests.html">Tests & Prices</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="login.html">Login</a></li>
+    </ul>
+</nav>
+
+<!-- تقسيمة الصفحة نصين -->
+<div class="container">
+
+    <!-- الجزء الشمال (تعريف وتشجيع المستخدم) -->
+    <div class="left">
+
+        <!-- طبقة فوق الخلفية -->
+        <div class="overlay">
+
+            <!-- عنوان التسجيل -->
+            <h1>Create Your Account</h1>
+
+            <!-- شرح بسيط -->
+            <p>
+                Join us and start managing your healthcare services easily.
+            </p>
+
+            <!-- مميزات النظام -->
+            <div class="features">
+
+                <!-- أمان النظام -->
+                <div class="box">Secure System</div>
+
+                <!-- سهولة الاستخدام -->
+                <div class="box">Easy Access</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- الجزء اليمين (فورم إنشاء الحساب) -->
+    <div class="right">
+
+        <!-- عنوان الفورم -->
+        <h2>Register</h2>
+
+        <!-- سطر توضيحي -->
+        <p class="sub">Create a new account</p>
+
+        <!-- فورم التسجيل -->
+        <form action="home.html">
+
+            <!-- الاسم الكامل -->
+            <input type="text" placeholder="Full Name">
+
+            <!-- الايميل -->
+            <input type="email" placeholder="Email">
+
+            <!-- كلمة المرور -->
+            <input type="password" placeholder="Password">
+
+            <!-- تأكيد الباسورد -->
+            <input type="password" placeholder="Confirm Password">
+
+            <!-- رقم التليفون -->
+            <input type="tel" placeholder="Phone Number">
+
+            <!-- زر إنشاء الحساب -->
+            <button type="submit">Create Account</button>
+        </form>
+
+        <!-- تحويل لصفحة تسجيل الدخول -->
+        <div class="switch">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

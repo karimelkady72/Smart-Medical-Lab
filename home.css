@@ -1,0 +1,195 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background-color: #f5f7fa;
+}
+
+
+.header {
+    background-color: white;
+    padding: 15px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid #ddd;
+}
+
+.header h2 {
+    color: #2a6bbf;
+    margin: 0;
+}
+
+
+nav {
+    margin: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #2a6bbf;
+    border-bottom: 2px solid #2a6bbf;
+}
+
+
+.welcome h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #333;
+}
+
+.welcome p {
+    margin-top: 8px;
+    font-size: 15px;
+    color: #444;
+}
+
+
+.cards {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    justify-content: center;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  padding: 30px 40px;
+}
+
+
+.recent-activity 
+{
+  background: white;
+  margin: 30px 40px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.activity-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.activity-item p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.activity-item span {
+  color: gray;
+  font-size: 14px;
+}
+
+
+
+.health-tip {
+  background: #1e73be;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.stats {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.bar {
+  background: #eee;
+  height: 8px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.fill {
+  background: orange;
+  height: 100%;
+  border-radius: 5px;
+}
+
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #2a6bbf;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e5fa8;
+}
+
+.highlight {
+    background-color: #1e5fa8;
+    color: white;
+}
+
+.btn-white {
+    background-color: white;
+    color: #1e5fa8;
+}
+
+
+.dashboard {
+    display: flex;
+    gap: 20px;
+    padding: 0 30px 30px;
+}
+
+
+
+
+.footer {
+    background-color: #eee;
+    text-align: center;
+    padding: 15px;
+}
+
+.footer-links a {
+    margin: 0 10px;
+    font-size: 13px;
+    color: #555;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #b20e0e;
+    font-weight: bold;
+}
+
+
+
+
+
+

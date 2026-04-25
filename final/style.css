@@ -578,25 +578,93 @@ footer a:hover, .footer-links a:hover {
 
 /* تظبيط شكل الموقع على الموبايل: بنخلي كل حاجة تترص تحت بعضها بدل ما هي جنب بعض */
 @media (max-width: 768px) {
-  .dashboard, .grid-layout, .container {
-    grid-template-columns: 1fr;
-    flex-direction: column;
+
+  nav {
+    padding: 10px;
   }
-  
+
+  nav ul {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav ul li a {
+    font-size: 0.85rem;
+  }
+
+  .hero,
+  .page-header,
+  .header,
+  header:not(.top-nav) {
+    padding: 100px 15px 60px;
+  }
+
+  .hero h1,
+  .page-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p,
+  .page-header p {
+    font-size: 0.9rem;
+  }
+
+  .grid-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+
   .input-row {
     flex-direction: column;
     gap: 0;
   }
 
-  .stats-strip {
-    margin-top: 20px;
+  .container {
+    flex-direction: column;
+    margin: 80px 15px;
   }
+
+  .container .left,
+  .container .right {
+    padding: 25px;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .cards,
+  .packages-cards {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .stats-strip {
+    margin: 20px 10px;
+  }
+
+  .cta-block {
+    margin: 20px 10px;
+    padding: 30px 15px;
+  }
+
+  .cta-block h3 {
+    font-size: 1.3rem;
+  }
+
+  #searchInput {
+    width: 90%;
+  }
+}
 
   /* تصغير العناوين شوية على الموبايل عشان متبقاش ضخمة */
   .hero h1, .page-header h1, .header h1, header:not(.top-nav) h1, body > h1 {
     font-size: 2rem;
   }
-}
+
 .cta-block {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: var(--white);

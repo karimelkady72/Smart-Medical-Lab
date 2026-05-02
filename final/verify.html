@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=.8">
+    <title>Verify Account</title>
+    <script src="/Script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
+    <style>
+        /* ستايل إضافي لصفحة التفعيل بس */
+        .verify-code-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .verify-code-inputs input {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+        }
+        .verify-code-inputs input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+        }
+        .resend-text {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+        .resend-text a {
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+     <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">☰</label>
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="tests.html">Tests & Prices</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="login.html">Login</a></li>
+        
+        <li><a href="#" class="lang-switch" onclick="switchToArabic()">عربي 🌐</a></li>
+        
+        <li>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </span>
+            </label>
+        </li>
+    </ul>
+</nav>
+
+    <div class="container" style="max-width: 600px; margin-top: 120px;">
+        <div class="right" style="padding: 40px;">
+            <h2 style="text-align: center; margin-bottom: 10px;">Verification Code</h2>
+            <p class="sub" style="text-align: center; margin-bottom: 30px;">
+                We have sent a 4-digit code to your email/phone. Please enter it below.
+            </p>
+
+            <!-- الفورم اللي بيودي لصفحة اللوجن بعد التأكيد -->
+            <form action="login.html" onsubmit="return alert('Account verified successfully! Please login.');">
+                
+                <div class="verify-code-inputs">
+                    <!-- حقول الكود 4 أرقام -->
+                    <input type="text" maxlength="1" required autocomplete="off" onkeyup="moveToNext(this, 'box2')">
+                    <input type="text" id="box2" maxlength="1" required autocomplete="off" onkeyup="moveToNext(this, 'box3')">
+                    <input type="text" id="box3" maxlength="1" required autocomplete="off" onkeyup="moveToNext(this, 'box4')">
+                    <input type="text" id="box4" maxlength="1" required autocomplete="off">
+                </div>
+
+                <button type="submit" style="width: 100%;">Verify & Continue</button>
+            </form>
+
+            <div class="resend-text">
+                Didn't receive the code? <a onclick="alert('A new code has been sent.')">Resend</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- كود جافاسكريبت صغير عشان ينقل الماوس أوتوماتيك للمربع اللي بعده -->
+    <script>
+        function moveToNext(current, nextFieldID) {
+            if (current.value.length >= current.maxLength) {
+                document.getElementById(nextFieldID).focus();
+            }
+        }
+    </script>
+</body>
+
+</html>

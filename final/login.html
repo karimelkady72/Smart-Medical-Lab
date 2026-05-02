@@ -1,19 +1,24 @@
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-
-
-<meta name="viewport" content="width=device-width, initial-scale=.8">
-    <!-- عنوان الصفحة -->
-    <title>Login</title>
-
-    <!--  css ربط ملف ال  -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  
+  <script src="/Script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
 </head>
 <body>
 
-<!-- شريط التنقل بين صفحات الموقع -->
-<nav>
+   <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">☰</label>
     <ul>
         <li><a href="home.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
@@ -22,71 +27,50 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="login.html">Login</a></li>
+        
+        <li><a href="#" class="lang-switch" onclick="switchToArabic()">عربي 🌐</a></li>
+        
+        <li>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </span>
+            </label>
+        </li>
     </ul>
 </nav>
 
-<!-- تقسيمة الصفحة نصين -->
-<div class="container">
-
-    <!-- الناحية الشمال (تصميم وتعريف بالموقع) -->
+  <div class="container">
     <div class="left">
-
-        <!-- طبقة تغطية فوق الخلفية -->
-        <div class="overlay">
-
-            <!-- رسالة ترحيب -->
-            <h1>Welcome to the Future of Healthcare</h1>
-
-            <!-- وصف سريع عن الخدمة -->
-            <p>
-                We combine precision and advanced technology to deliver accurate lab results
-                in a safe and reliable environment.
-            </p>
-
-            <!-- مميزات سريعة -->
-            <div class="features">
-
-                <!-- ميزة 1 -->
-                <div class="box">Fast Results</div>
-
-                <!-- ميزة 2 -->
-                <div class="box">Advanced Technology</div>
-            </div>
-
+      <div class="overlay">
+        <h1>Welcome to the Future of Healthcare</h1>
+        <p>We combine precision and advanced technology to deliver accurate lab results in a safe and reliable environment.</p>
+        <div class="features">
+          <div class="box">Fast Results</div>
+          <div class="box">Advanced Technology</div>
         </div>
+      </div>
     </div>
 
-    <!-- الناحية اليمين (فورم تسجيل الدخول) -->
     <div class="right">
+      <h2>Login</h2>
+      <p class="sub">Access your account easily</p>
+      
+      <!-- بعد ما يسجل دخول صح، هيحوله لصفحة الهوم -->
+      <form action="home.html">
+        <input type="email" placeholder="Email or Phone" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
 
-        <!-- عنوان الفورم -->
-        <h2>Login</h2>
-
-        <!-- سطر توضيحي -->
-        <p class="sub">Access your account  easily</p>
-
-        <!-- فورم تسجيل الدخول -->
-        <form action="home.html">
-
-            <!-- الايميل أو رقم الموبايل -->
-            <input type="email" placeholder="Email or Phone">
-
-            <!-- الباسورد -->
-            <input type="password" placeholder="Password">
-
-            <!-- زرار تسجيل الدخول -->
-            <button type="submit">Login</button>
-        </form>
-
-        <!-- تحويل لصفحة التسجيل -->
-        <div class="switch">
-            Don't have an account?
-            <a href="register.html">Register</a>
-        </div>
-
+      <!-- زرار التحويل لصفحة إنشاء الحساب -->
+      <div class="switch">
+        Don't have an account? <a href="register.html">Register</a>
+      </div>
     </div>
-
-</div>
+  </div>
 
 </body>
 </html>

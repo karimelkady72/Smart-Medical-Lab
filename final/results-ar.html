@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>النتائج</title>
+  <script src="Script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
+</head>
+<body>
+
+  <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">☰</label>
+    <ul>
+        <li><a href="home-ar.html">الرئيسية</a></li>
+        <li><a href="services-ar.html">الخدمات</a></li>
+        <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
+        <li><a href="results-ar.html">النتائج</a></li>
+        <li><a href="contact-ar.html">تواصل معنا</a></li>
+        <li><a href="about-ar.html">عن المعمل</a></li>
+        <li><a href="login-ar.html">تسجيل الدخول</a></li>
+        <li><a href="#" class="lang-switch" onclick="switchToEnglish()">English 🌐</a></li>
+        <li>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </span>
+            </label>
+        </li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <h1>نتائج التحاليل</h1>
+    <p>أدخل رقم الحجز أو الاسم لعرض وتحميل نتيجتك</p>
+  </div>
+
+  <main>
+    <div class="search-card">
+      <h2>ابحث عن نتيجتك</h2>
+      <div class="input-row">
+        <div class="field">
+          <label>رقم الحجز</label>
+          <input type="text" id="booking-id" placeholder="مثال: NL-2024-0891" />
+        </div>
+        <div class="field">
+          <label>أو اسم المريض</label>
+          <input type="text" id="patient-name" placeholder="الاسم بالكامل" />
+        </div>
+        <button class="btn-search" onclick="searchResult()">عرض النتيجة</button>
+      </div>
+      <div id="error-msg">لم يتم العثور على نتيجة. يرجى مراجعة البيانات.</div>
+    </div>
+
+    <div class="action-row">
+      <button class="btn-pdf" onclick="printPage()">تحميل PDF</button>
+      <button class="btn-share" onclick="alert('تم نسخ الرابط!')">مشاركة</button>
+      <button class="btn-share" onclick="window.print()">طباعة</button>
+    </div>
+  </main>
+
+  <footer>
+    جميع الحقوق محفوظة © ٢٠٢٦ | <span>المعمل الطبي</span>
+  </footer>
+
+</body>
+</html>

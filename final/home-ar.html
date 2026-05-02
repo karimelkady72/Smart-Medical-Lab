@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="Script.js"></script>
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
+</head>
+<body>
+
+  <header class="header">
+    <h2>معمل التحاليل الدقيقة</h2>
+    <nav>
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="hamburger">☰</label>
+      <ul>
+          <li><a href="home-ar.html">الرئيسية</a></li>
+          <li><a href="services-ar.html">الخدمات</a></li>
+          <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
+          <li><a href="results-ar.html">النتائج</a></li>
+          <li><a href="contact-ar.html">تواصل معنا</a></li>
+          <li><a href="about-ar.html">عن المعمل</a></li>
+          <li><a href="login-ar.html">تسجيل الدخول</a></li>
+          <li><a href="#" class="lang-switch" onclick="switchToEnglish()">English 🌐</a></li>
+          <li>
+              <label class="switch">
+                  <input type="checkbox" id="theme-toggle">
+                  <span class="slider">
+                      <span class="icon sun">☀️</span>
+                      <span class="icon moon">🌙</span>
+                  </span>
+              </label>
+          </li>
+      </ul>
+    </nav>
+    <div class="welcome">
+      <h1>مرحباً بك</h1>
+      <p>نحن هنا لرعاية صحتك.</p>
+    </div>
+  </header>
+
+  <section class="cards">
+    <div class="card">
+      <h3>المواعيد القادمة</h3>
+      <button onclick="window.location.href='my-appointments-ar.html'">عرض المواعيد</button>
+    </div>
+    <div class="card">
+      <h3>نتائج التحاليل</h3>
+      <p>عرض نتائج تحاليلك السابقة</p>
+      <button onclick="window.location.href='results-ar.html'">عرض النتائج</button>
+    </div>
+    <div class="card highlight">
+      <h3>احجز تحليل جديد</h3>
+      <p>ابدأ الآن واحجز تحليلك</p>
+      <button class="btn-white" onclick="window.location.href='services-ar.html'">احجز الآن</button>
+    </div>
+  </section>
+
+  <section class="dashboard">
+    <div class="left-side">
+      <div class="health-tip">
+        <h4>نصيحة صحية</h4>
+        <p>اشرب كمية كافية من الماء يومياً وحافظ على نظام غذائي متوازن لصحة أفضل.</p>
+        <button onclick="window.location.href='about-ar.html'">اقرأ المزيد</button>
+      </div>
+      <div class="stats">
+        <p>سكر الدم</p>
+        <div class="bar"><div class="fill" style="width:70%"></div></div>
+        <p>ضغط الدم</p>
+        <div class="bar"><div class="fill" style="width:50%"></div></div>
+      </div>
+    </div>
+
+    <div class="right-side">
+      <div class="recent-activity">
+        <h3>النشاط الأخير</h3>
+        <div class="activity-item">
+          <p>صورة دم كاملة (CBC)</p>
+          <span>تم - ١٩ أبريل ٢٠٢٦</span>
+        </div>
+        <div class="activity-item">
+          <p>زيارة منزلية - سحب عينة</p>
+          <span>١٩ أبريل - ٠٩:٣٠ صباحاً</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© ٢٠٢٦ جميع الحقوق محفوظة</p>
+    <div class="footer-links">
+      <a href="#">سياسة الخصوصية</a>
+      <a href="#">الشروط والأحكام</a>
+    </div>
+  </footer>
+
+</body>
+</html>

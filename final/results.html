@@ -1,22 +1,32 @@
 <html lang="en" dir="ltr">
+
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-<!-- بيظبط الصفحة تشتغل كويس على الموبايل وكل الأحجام -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- بيظبط الصفحة تشتغل كويس على الموبايل وكل الأحجام -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lab Results</title>
+  <title>Lab Results</title>
+  <!--ملف الجافا-->
+  <script src="/Script.js"></script>
+  <!-- فونت Cairo علشان الشكل يبقى أنضف وأسهل في القراءة -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- فونت Cairo علشان الشكل يبقى أنضف وأسهل في القراءة -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- ربط ملف الـ CSS اللي فيه كل التنسيق بتاع الصفحة -->
-<link rel="stylesheet" href="style.css">
+  <!-- ربط ملف الـ CSS اللي فيه كل التنسيق بتاع الصفحة -->
+  <link rel="stylesheet" href="style.css">
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
 </head>
+
 <body>
 
-<!-- الناف بار اللي بيسمح للمستخدم ينتقل بين صفحات الموقع بسهولة -->
-<nav>
+  <!-- الناف بار اللي بيسمح للمستخدم ينتقل بين صفحات الموقع بسهولة -->
+  <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">☰</label>
     <ul>
         <li><a href="home.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
@@ -25,67 +35,79 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="login.html">Login</a></li>
+        
+        <li><a href="#" class="lang-switch" onclick="switchToArabic()">عربي 🌐</a></li>
+        
+        <li>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </span>
+            </label>
+        </li>
     </ul>
 </nav>
+  <!-- الجزء اللي فوق في الصفحة اللي بيشرح الهدف منها -->
+  <div class="page-header">
+    <h1>Lab Results</h1>
+    <p>Enter your booking ID or name to view and download your results</p>
+  </div>
 
-<!-- الجزء اللي فوق في الصفحة اللي بيشرح الهدف منها -->
-<div class="page-header">
-  <h1>Lab Results</h1>
-  <p>Enter your booking ID or name to view and download your results</p>
-</div>
+  <main>
 
-<main>
+    <!-- كارت البحث اللي المستخدم بيكتب فيه بياناته عشان يجيب النتيجة -->
+    <div class="search-card">
 
-  <!-- كارت البحث اللي المستخدم بيكتب فيه بياناته عشان يجيب النتيجة -->
-  <div class="search-card">
+      <h2>Search for your result</h2>
 
-    <h2>Search for your result</h2>
+      <!-- هنا المستخدم بيحط بيانات البحث سواء ID أو الاسم -->
+      <div class="input-row">
 
-    <!-- هنا المستخدم بيحط بيانات البحث سواء ID أو الاسم -->
-    <div class="input-row">
+        <!-- البحث عن طريق رقم الحجز لأنه أدق -->
+        <div class="field">
+          <label>Booking ID</label>
+          <input type="text" id="booking-id" placeholder="Example: NL-2024-0891" />
+        </div>
 
-      <!-- البحث عن طريق رقم الحجز لأنه أدق -->
-      <div class="field">
-        <label>Booking ID</label>
-        <input type="text" id="booking-id" placeholder="Example: NL-2024-0891" />
+        <!-- بديل لو المستخدم مش عارف الـ ID -->
+        <div class="field">
+          <label>Or Patient Name</label>
+          <input type="text" id="patient-name" placeholder="Full name" />
+        </div>
+
+        <!-- زرار بيشغل دالة جافاسكربت تدور على النتيجة -->
+        <button class="btn-search" onclick="searchResult()">View Result</button>
+
       </div>
 
-      <!-- بديل لو المستخدم مش عارف الـ ID -->
-      <div class="field">
-        <label>Or Patient Name</label>
-        <input type="text" id="patient-name" placeholder="Full name" />
-      </div>
-
-      <!-- زرار بيشغل دالة جافاسكربت تدور على النتيجة -->
-      <button class="btn-search" onclick="searchResult()">View Result</button>
+      <!-- رسالة بتظهر لو مفيش نتيجة أو البيانات غلط -->
+      <div id="error-msg">No result found. Please check your data.</div>
 
     </div>
 
-    <!-- رسالة بتظهر لو مفيش نتيجة أو البيانات غلط -->
-    <div id="error-msg">No result found. Please check your data.</div>
+    <!-- أزرار التعامل مع النتيجة بعد ما تظهر -->
+    <div class="action-row">
 
-  </div>
+      <!-- بيحول النتيجة لصفحة طباعة / PDF -->
+      <button class="btn-pdf" onclick="printPage()">Download PDF</button>
 
-  <!-- أزرار التعامل مع النتيجة بعد ما تظهر -->
-  <div class="action-row">
+      <!-- بيعمل نسخ للينك أو مشاركة النتيجة -->
+      <button class="btn-share" onclick="alert('Link copied!')">Share</button>
 
-    <!-- بيحول النتيجة لصفحة طباعة / PDF -->
-    <button class="btn-pdf" onclick="printPage()">Download PDF</button>
+      <!-- بيطبع الصفحة مباشرة من المتصفح -->
+      <button class="btn-share" onclick="window.print()">Print</button>
 
-    <!-- بيعمل نسخ للينك أو مشاركة النتيجة -->
-    <button class="btn-share" onclick="alert('Link copied!')">Share</button>
+    </div>
 
-    <!-- بيطبع الصفحة مباشرة من المتصفح -->
-    <button class="btn-share" onclick="window.print()">Print</button>
+  </main>
 
-  </div>
-
-</main>
-
-<!-- الفوتر اللي فيه الحقوق -->
-<footer>
-  All rights reserved © 2026 | <span>Medical Lab</span>
-</footer>
+  <!-- الفوتر اللي فيه الحقوق -->
+  <footer>
+    All rights reserved © 2026 | <span>Medical Lab</span>
+  </footer>
 
 </body>
+
 </html>

@@ -1,14 +1,19 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Services</title>
-
-    <!-- ربط ملف الستايل -->
-   <link rel="stylesheet" href="style.css">
+    <script src="Script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
 </head>
 <body>
-
-<!-- الناف بار بتاع الموقع -->
-<nav>
+  <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">☰</label>
     <ul>
         <li><a href="home.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
@@ -17,151 +22,92 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="login.html">Login</a></li>
+        <li><a href="#" class="lang-switch" onclick="switchToArabic()">عربي 🌐</a></li>
+        <li>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </span>
+            </label>
+        </li>
     </ul>
-</nav>
-
-<!-- عنوان الصفحة -->
-<header>
-    <h1>Our Services</h1>
-    <p>Book your service easily</p>
-</header>
-
-<main>
-
-<!-- سيكشن حجز التحاليل -->
-<section>
-
-    <!-- details عشان تفتح وتقفل السيكشن -->
-    <details>
-
-        <!-- العنوان اللي بيتداس عليه -->
-        <summary><h2>Lab Tests</h2></summary>
-
-        <p>Book any medical test from our lab</p>
-
-        <!-- فورم حجز التحليل -->
-        <form>
-
-            <!-- اسم المستخدم -->
-            <label>Full Name</label><br>
-            <input type="text" required><br><br>
-
-            <!-- الايميل -->
-            <label>Email</label><br>
-            <input type="email" required><br><br>
-
-            <!-- رقم التليفون -->
-            <label>Phone Number</label><br>
-            <input type="tel" required><br><br>
-
-            <!-- نوع التحليل -->
-            <label>Test Type:</label><br>
-            <input type="text" required><br><br>
-
-            <!-- التاريخ -->
-            <label>Date</label><br>
-            <input type="date" required><br><br>
-
-            <!-- زرار الحجز -->
-            <button type="submit">Book Test</button>
-        </form>
-    </details>
-</section>
-
-<hr>
-
-<!-- سيكشن حجز دكتور -->
-<section>
-    <details>
-
-        <!-- عنوان السيكشن -->
-        <summary><h2>Doctor Appointment</h2></summary>
-
-        <p>Book an appointment with a specialist doctor</p>
-
-        <!-- فورم الحجز -->
-        <form>
-
-            <label>Full Name:</label><br>
-            <input type="text" required><br><br>
-
-            <label>Email:</label><br>
-            <input type="email" required><br><br>
-
-            <label>Phone Number:</label><br>
-            <input type="tel" required><br><br>
-
-            <!-- تخصص الدكتور -->
-            <label>Specialty:</label><br>
-            <input type="text" required><br><br>
-
-            <!-- التاريخ -->
-            <label>Date:</label><br>
-            <input type="date" required><br><br>
-
-            <!-- الوقت -->
-            <label>Time:</label><br>
-            <input type="time" required><br><br>
-
-            <button type="submit">Book Appointment</button>
-        </form>
-    </details>
-</section>
-
-<hr>
-
-<!-- سيكشن الزيارة المنزلية -->
-<section>
-    <details>
-
-        <!-- عنوان الجزء -->
-        <summary><h2>Home Visit</h2></summary>
-
-        <p>We provide home sample collection service</p>
-
-        <!-- فورم طلب زيارة -->
-        <form>
-
-            <label>Full Name:</label><br>
-            <input type="text" required><br><br>
-
-            <label>Email:</label><br>
-            <input type="email" required><br><br>
-
-            <label>Phone Number:</label><br>
-            <input type="tel" required><br><br>
-
-            <!-- العنوان -->
-            <label>Address:</label><br>
-            <input type="text" required><br><br>
-
-            <!-- التاريخ -->
-            <label>Date:</label><br>
-            <input type="date" required><br><br>
-
-            <!-- التحاليل المطلوبة -->
-            <label>Requested Tests</label><br>
-            <textarea required></textarea><br><br>
-
-            <!-- رفع صورة روشتة -->
-            <label>Upload Prescription / Test Image</label><br>
-            <input type="file"><br><br>
-
-            <button type="submit">Request Visit</button>
-        </form>
-    </details>
-</section>
-
-</main>
-
-<!-- الفوتر -->
-<footer>
-
-    <hr>
-
-    <!-- حقوق الموقع -->
-    <p>© 2026 Medical Lab. All rights reserved.</p>
-</footer>
-
+  </nav>
+    <header>
+        <h1>Our Services</h1>
+        <p>Book your service easily</p>
+    </header>
+    <main>
+        <section>
+            <details>
+                <summary><h2>Lab Tests</h2></summary>
+                <p>Book any medical test from our lab</p>
+                <form id="lab-form">
+                    <label>Full Name</label><br>
+                    <input type="text" required><br><br>
+                    <label>Email</label><br>
+                    <input type="email" required><br><br>
+                    <label>Phone Number</label><br>
+                    <input type="tel" required><br><br>
+                    <label>Test Type:</label><br>
+                    <input type="text" id="test-type-input" required><br><br>
+                    <label>Date</label><br>
+                    <input type="date" required><br><br>
+                    <button type="submit">Book Test</button>
+                </form>
+            </details>
+        </section>
+        <hr>
+        <section>
+            <details>
+                <summary><h2>Doctor Appointment</h2></summary>
+                <p>Book an appointment with a specialist doctor</p>
+                <form id="doctor-form">
+                    <label>Full Name:</label><br>
+                    <input type="text" required><br><br>
+                    <label>Email:</label><br>
+                    <input type="email" required><br><br>
+                    <label>Phone Number:</label><br>
+                    <input type="tel" required><br><br>
+                    <label>Specialty:</label><br>
+                    <input type="text" required><br><br>
+                    <label>Date:</label><br>
+                    <input type="date" required><br><br>
+                    <label>Time:</label><br>
+                    <input type="time" required><br><br>
+                    <button type="submit">Book Appointment</button>
+                </form>
+            </details>
+        </section>
+        <hr>
+        <section>
+            <details>
+                <summary><h2>Home Visit</h2></summary>
+                <p>We provide home sample collection service</p>
+                <form id="home-form">
+                    <label>Full Name:</label><br>
+                    <input type="text" required><br><br>
+                    <label>Email:</label><br>
+                    <input type="email" required><br><br>
+                    <label>Phone Number:</label><br>
+                    <input type="tel" required><br><br>
+                    <label>Address:</label><br>
+                    <input type="text" required><br><br>
+                    <label>Date:</label><br>
+                    <input type="date" required><br><br>
+                    <label>Requested Tests</label><br>
+                    <textarea required></textarea><br><br>
+                    <label>Upload Prescription / Test Image</label><br>
+                    <input type="file"><br><br>
+                    <button type="submit">Request Visit</button>
+                </form>
+            </details>
+        </section>
+    </main>
+    <footer>
+        <hr>
+        <p>© 2026 Medical Lab. All rights reserved.</p>
+    </footer>
 </body>
 </html>

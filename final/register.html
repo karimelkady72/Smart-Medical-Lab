@@ -1,18 +1,26 @@
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=.8">
-    <!-- عنوان الصفحة -->
-    <title>Register</title>
-
-    <!-- ربط ملف الستايل -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  
+  <!-- استدعاء ملف الجافاسكريبت والستايل مظبوطين -->
+  <script src="Script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
 </head>
 <body>
 
-<!-- شريط التنقل بين صفحات الموقع -->
-<nav>
+  <!-- الناف بار المظبوط -->
+   <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">☰</label>
     <ul>
         <li><a href="home.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
@@ -21,79 +29,63 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="login.html">Login</a></li>
+        
+        <li><a href="#" class="lang-switch" onclick="switchToArabic()">عربي 🌐</a></li>
+        
+        <li>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </span>
+            </label>
+        </li>
     </ul>
 </nav>
 
-<!-- تقسيمة الصفحة نصين -->
-<div class="container">
-
-    <!-- الجزء الشمال (تعريف وتشجيع المستخدم) -->
+  <div class="container">
+    <!-- الجزء الشمال -->
     <div class="left">
-
-        <!-- طبقة فوق الخلفية -->
-        <div class="overlay">
-
-            <!-- عنوان التسجيل -->
-            <h1>Create Your Account</h1>
-
-            <!-- شرح بسيط -->
-            <p>
-                Join us and start managing your healthcare services easily.
-            </p>
-
-            <!-- مميزات النظام -->
-            <div class="features">
-
-                <!-- أمان النظام -->
-                <div class="box">Secure System</div>
-
-                <!-- سهولة الاستخدام -->
-                <div class="box">Easy Access</div>
-            </div>
-
+      <div class="overlay">
+        <h1>Create Your Account</h1>
+        <p>Join us and start managing your healthcare services easily.</p>
+        <div class="features">
+          <div class="box">Secure System</div>
+          <div class="box">Easy Access</div>
         </div>
+      </div>
     </div>
 
-    <!-- الجزء اليمين (فورم إنشاء الحساب) -->
+    <!-- الجزء اليمين (الفورم) -->
     <div class="right">
-
-        <!-- عنوان الفورم -->
-        <h2>Register</h2>
-
-        <!-- سطر توضيحي -->
-        <p class="sub">Create a new account</p>
-
-        <!-- فورم التسجيل -->
-        <form action="home.html">
-
-            <!-- الاسم الكامل -->
-            <input type="text" placeholder="Full Name">
-
-            <!-- الايميل -->
-            <input type="email" placeholder="Email">
-
-            <!-- كلمة المرور -->
-            <input type="password" placeholder="Password">
-
-            <!-- تأكيد الباسورد -->
-            <input type="password" placeholder="Confirm Password">
-
-            <!-- رقم التليفون -->
-            <input type="tel" placeholder="Phone Number">
-
-            <!-- زر إنشاء الحساب -->
-            <button type="submit">Create Account</button>
-        </form>
-
-        <!-- تحويل لصفحة تسجيل الدخول -->
-        <div class="switch">
-            Already have an account?
-            <a href="login.html">Login</a>
-        </div>
-
+      <h2>Register</h2>
+      <p class="sub">Create a new account</p>
+      
+      <!-- بعد ما يملى البيانات هيروح لصفحة التفعيل اللي عملناها -->
+      <form id="register-form" action="verify.html">
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="password" id="reg-password" placeholder="Password" required>
+    <input type="password" id="reg-confirm" placeholder="Confirm Password" required>
+    
+    <div class="phone-input-container">
+        <select id="country-code" onchange="updatePhoneLimit()">
+            <option value="+20" data-len="11">🇪🇬 +20</option>
+            <option value="+966" data-len="9">🇸🇦 +966</option>
+            <option value="+971" data-len="9">🇦🇪 +971</option>
+            <option value="+965" data-len="8">🇰🇼 +965</option>
+        </select>
+        <input type="tel" id="phone-number" placeholder="Phone Number" maxlength="11" minlength="11" required>
     </div>
-
-</div>
+    <button type="submit">Create Account</button>
+</form>
+      <!-- تحويل لصفحة اللوجن لو هو عنده حساب -->
+      <div class="switch">
+        Already have an account? <a href="login.html">Login</a>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

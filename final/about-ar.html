@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عن المعمل</title>
+  <script src="Script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
+</head>
+<body>
+
+  <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">☰</label>
+    <ul>
+        <li><a href="home-ar.html">الرئيسية</a></li>
+        <li><a href="services-ar.html">الخدمات</a></li>
+        <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
+        <li><a href="results-ar.html">النتائج</a></li>
+        <li><a href="contact-ar.html">تواصل معنا</a></li>
+        <li><a href="about-ar.html">عن المعمل</a></li>
+        <li><a href="login-ar.html">تسجيل الدخول</a></li>
+        <li><a href="#" class="lang-switch" onclick="switchToEnglish()">English 🌐</a></li>
+        <li>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </span>
+            </label>
+        </li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h1>المعمل الطبي</h1>
+    <p>نقدم خدمات تشخيصية دقيقة وموثوقة لأكثر من ١٥ عاماً بخبرات وتقنيات متطورة</p>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">+٥٠,٠٠٠</div>
+        <div class="stat-label">مريض تم خدمتهم</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">+٢٠٠</div>
+        <div class="stat-label">تحليل متاح</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">١٥</div>
+        <div class="stat-label">سنة خبرة</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">٩٨٪</div>
+        <div class="stat-label">رضا العملاء</div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <h2 class="sec-title">من نحن</h2>
+      <div class="about-card">
+        <p><span class="highlight">المعمل الطبي</span> تأسس عام ٢٠١٠ بواسطة مجموعة من الأطباء المتخصصين لتقديم خدمات تشخيصية سريعة ودقيقة.</p>
+        <p>نحن نؤمن بأن التشخيص الدقيق هو الخطوة الأولى للعلاج الصحيح، لذا نستثمر في أحدث التقنيات والتدريب المستمر.</p>
+        <p>كما نوفر <span class="highlight">خدمات الزيارة المنزلية</span> وتسليم النتائج أونلاين بسرعة.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec-title">قيمنا</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-title">الدقة والجودة</div>
+          <div class="value-desc">نتبع أعلى المعايير لضمان نتائج موثوقة</div>
+        </div>
+        <div class="value-card">
+          <div class="value-title">السرعة والكفاءة</div>
+          <div class="value-desc">نتائج سريعة دون التأثير على الدقة</div>
+        </div>
+        <div class="value-card">
+          <div class="value-title">رعاية المريض</div>
+          <div class="value-desc">اهتمام شخصي ودعم احترافي</div>
+        </div>
+        <div class="value-card">
+          <div class="value-title">الخصوصية</div>
+          <div class="value-desc">بياناتك آمنة تماماً لدينا</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec-title">رحلتنا</h2>
+      <div class="about-card">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">٢٠١٠</div>
+            <div class="timeline-text">تأسيس المعمل</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">٢٠١٥</div>
+            <div class="timeline-text">الحصول على شهادة الجودة</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">٢٠١٩</div>
+            <div class="timeline-text">إطلاق الزيارات المنزلية</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">٢٠٢٦</div>
+            <div class="timeline-text">إطلاق نظام النتائج أونلاين</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-block">
+      <h3>مستعد لحجز تحليلك؟</h3>
+      <p>فريقنا جاهز لمساعدتك</p>
+      <div class="cta-btns">
+        <a href="services-ar.html">احجز الآن</a>
+        <a href="contact-ar.html">تواصل معنا</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    جميع الحقوق محفوظة © ٢٠٢٦ | <span>المعمل الطبي</span>
+  </footer>
+
+</body>
+</html>

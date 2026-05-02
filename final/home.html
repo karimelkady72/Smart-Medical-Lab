@@ -1,136 +1,98 @@
-<html lang="en" dir="ltr">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=.8">
-    <!-- ربط الستايل بتاع الصفحة -->
-    <link rel="stylesheet" href="style.css">
-
-    <title>Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=.8">
+  <link rel="stylesheet" href="style.css">
+  <script src="Script.js"></script>
+  <title>Dashboard</title>
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
 </head>
 <body>
-
-<!-- الهيدر فيه اللوجو + الناف + رسالة الترحيب -->
-<header class="header">
-
-    <!-- اسم الموقع -->
+  <header class="header">
     <h2>Clinical Precision</h2>
-
-    <!-- لينكات التنقل -->
     <nav>
-        <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="tests.html">Tests & Prices</a></li>
-            <li><a href="results.html">Results</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </nav>
-
-    <!-- رسالة الترحيب اللي بتظهر فوق -->
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">☰</label>
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="tests.html">Tests & Prices</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="#" class="lang-switch" onclick="switchToArabic()">عربي 🌐</a></li>
+        <li>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </span>
+            </label>
+        </li>
+    </ul>
+</nav>
     <div class="welcome">
-        <h1>Welcome </h1>
-        <p>We are here to care for your health.</p>
+      <h1>Welcome </h1>
+      <p>We are here to care for your health.</p>
     </div>
-
-</header>
-
-<!-- كروت سريعة بتدي اختصارات -->
-<section class="cards">
-
-    <!-- كارت مواعيد جاية -->
+  </header>
+  <section class="cards">
     <div class="card">
-        <h3>Upcoming Appointments</h3>
-
-        <!-- بيديك تحويل على صفحة الخدمات -->
-        <button onclick="window.location.href='services.html'">View Appointments</button>
+      <h3>Upcoming Appointments</h3>
+      <button onclick="window.location.href='my-appointments.html'">View Appointments</button>
     </div>
-
-    <!-- كارت النتائج -->
     <div class="card">
-        <h3>Lab Results</h3>
-        <p>View your test results</p>
-
-        <!-- يوديك على صفحة النتائج -->
-        <button onclick="window.location.href='results.html'">View Results</button>
+      <h3>Lab Results</h3>
+      <p>View your test results</p>
+      <button onclick="window.location.href='results.html'">View Results</button>
     </div>
-
-    <!-- كارت مميز للحجز -->
     <div class="card highlight">
-        <h3>Book New Test</h3>
-        <p>Start now and book your test</p>
-
-        <!-- زرار الحجز -->
-        <button class="btn-white" onclick="window.location.href='services.html'">Book Now</button>
+      <h3>Book New Test</h3>
+      <p>Start now and book your test</p>
+      <button class="btn-white" onclick="window.location.href='services.html'">Book Now</button>
     </div>
-
-</section>
-
-<!-- الجزء الرئيسي للداتا -->
-<section class="dashboard">
-
-  <!-- الناحية الشمال -->
-  <div class="left-side">
-
-    <!-- نصيحة صحية -->
-    <div class="health-tip">
-      <h4>Health Tip</h4>
-      <p>Drink enough water daily and maintain a balanced diet for better health.</p>
-
-      <!-- يوديك لصفحة about -->
-      <button onclick="window.location.href='about.html'">Read More</button>
-    </div>
-
-    <!-- بارز بتوضح نسب -->
-    <div class="stats">
-      <p>Blood Sugar</p>
-
-      <!-- النسبة هنا متحكمة في العرض -->
-      <div class="bar"><div class="fill" style="width:70%"></div></div>
-
-      <p>Blood Pressure</p>
-
-      <div class="bar"><div class="fill" style="width:50%"></div></div>
-    </div>
-  </div>
-
-  <!-- الناحية اليمين -->
-  <div class="right-side">
-
-    <!-- آخر النشاطات -->
-    <div class="recent-activity">
-      <h3>Recent Activity</h3>
-
-      <!-- كل عنصر نشاط -->
-      <div class="activity-item">
-        <p>Complete Blood Count (CBC)</p>
-        <span>Done - 19 , April, 2026 </span>
+  </section>
+  <section class="dashboard">
+    <div class="left-side">
+      <div class="health-tip">
+        <h4>Health Tip</h4>
+        <p>Drink enough water daily and maintain a balanced diet for better health.</p>
+        <button onclick="window.location.href='about.html'">Read More</button>
       </div>
-
-      <div class="activity-item">
-        <p>Home Visit - Sample Collection</p>
-        <span> 19 April - 09:30 AM</span>
+      <div class="stats">
+        <p>Blood Sugar</p>
+        <div class="bar"><div class="fill" style="width:70%"></div></div>
+        <p>Blood Pressure</p>
+        <div class="bar"><div class="fill" style="width:50%"></div></div>
       </div>
     </div>
-  </div>
-
-</section>
-
-<!-- الفوتر تحت -->
-<footer class="footer">
-
-    <!-- حقوق الموقع -->
+    <div class="right-side">
+      <div class="recent-activity">
+        <h3>Recent Activity</h3>
+        <div class="activity-item">
+          <p>Complete Blood Count (CBC)</p>
+          <span>Done - 19 , April, 2026 </span>
+        </div>
+        <div class="activity-item">
+          <p>Home Visit - Sample Collection</p>
+          <span> 19 April - 09:30 AM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
     <p>© 2026 All rights reserved</p>
-
-    <!-- لينكات إضافية -->
     <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms & Conditions</a> 
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
     </div>
-
-</footer>
-
+  </footer>
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* هنا بنجيب خط "Cairo" من جوجل عشان الموقع يبقى شكله مودرن والكلام واضح للقراءة */
+/* شكل الفونط*/
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
 
 /* الـ Root ده هو المخزن بتاعنا.. حطينا فيه متغيرات الألوان والظلال عشان نغيرها من هنا مرة واحدة فتسمع في الموقع كله */
@@ -408,7 +408,7 @@ footer a:hover, .footer-links a:hover { color: var(--white); text-decoration: un
   color: #ffffff !important;
 }
 
-/* --- تعديلات الشاشات الصغيرة (الموبايل والتابلت) - الـ Media Query --- */
+/* --- تعديلات الموبايل والـ Responsive لجميع الصفحات --- */
 @media (max-width: 768px) {
   nav { justify-content: space-between; padding: 10px 5%; }
   .hamburger { display: block; } /* بنظهر علامة المنيو */
@@ -429,11 +429,14 @@ footer a:hover, .footer-links a:hover { color: var(--white); text-decoration: un
   .hero h1, .page-header h1, .header h1, header:not(.top-nav) h1, body > h1 { font-size: 2rem; }
   .hero p, .page-header p { font-size: 0.9rem; }
   
+  /* حل مشكلة صفحة الـ Login والكلام المختفي في الموبايل */
+  .container { flex-direction: column; margin: 80px 15px; }
+  .container .left { display: none; } /* بنخفي الجزء الشمال عشان نوفر مساحة */
+  .container .right { padding: 20px; width: 100%; flex: 1; }
+  
   /* بنخلي العناصر تترص تحت بعضها في الموبايل بدل ما هي جنب بعضها */
   .grid-layout { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
   .input-row { flex-direction: column; gap: 0; }
-  .container { flex-direction: column; margin: 80px 15px; }
-  .container .left, .container .right { padding: 25px; }
   .dashboard { grid-template-columns: 1fr; padding: 15px; }
   .cards, .packages-cards { grid-template-columns: 1fr; padding: 10px; }
   .stats-strip { margin: 20px 10px; }

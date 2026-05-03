@@ -1,26 +1,12 @@
 <!DOCTYPE html>
-<!-- تعريف إن الصفحة HTML5 -->
-
 <html lang="ar" dir="rtl">
-<!-- تحديد اللغة عربي واتجاه الصفحة من اليمين لليسار -->
-
 <head>
     <meta charset="UTF-8">
-    <!-- دعم اللغة العربية بشكل صحيح ومنع مشاكل الترميز -->
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- عشان الصفحة تبقى responsive على الموبايل -->
-
     <title>الخدمات</title>
-
     <script src="Script.js"></script>
-    <!-- ربط ملف الجافاسكريبت اللي فيه كل التفاعل بتاع الموقع -->
-
     <link rel="stylesheet" href="style.css">
-    <!-- ربط ملف التنسيق (CSS) -->
-
     <script>
-        // تشغيل الدارك مود لو المستخدم كان مختاره قبل كده
         if (localStorage.getItem("theme") === "dark") {
             document.documentElement.classList.add("dark-mode");
         }
@@ -29,16 +15,11 @@
 
 <body>
 
-  <!-- ====== NAV BAR ====== -->
-  <!-- ده شريط التنقل اللي بينقل المستخدم بين صفحات الموقع -->
   <nav>
-
-    <!-- زرار الموبايل (hamburger menu) -->
     <input type="checkbox" id="menu-toggle">
     <label for="menu-toggle" class="hamburger">☰</label>
 
     <ul>
-        <!-- روابط الصفحات الأساسية -->
         <li><a href="home-ar.html">الرئيسية</a></li>
         <li><a href="services-ar.html">الخدمات</a></li>
         <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
@@ -46,11 +27,7 @@
         <li><a href="contact-ar.html">تواصل معنا</a></li>
         <li><a href="about-ar.html">عن المعمل</a></li>
         <li><a href="login-ar.html">تسجيل الدخول</a></li>
-
-        <!-- زرار تحويل اللغة للإنجليزي -->
         <li><a href="#" class="lang-switch" onclick="switchToEnglish()">English 🌐</a></li>
-
-        <!-- زرار تغيير الثيم (Light / Dark) -->
         <li>
             <label class="switch">
                 <input type="checkbox" id="theme-toggle">
@@ -63,44 +40,29 @@
     </ul>
   </nav>
 
-    <!-- ====== HEADER ====== -->
-    <!-- عنوان الصفحة الرئيسي -->
     <header>
         <h1>خدماتنا</h1>
         <p>احجز خدمتك بكل سهولة</p>
     </header>
 
     <main>
-
-        <!-- ====== LAB TEST BOOKING ====== -->
-        <!-- قسم حجز التحاليل -->
         <section>
             <details>
                 <summary><h2>تحاليل المعمل</h2></summary>
-
                 <p>احجز أي تحليل طبي من معملنا</p>
-
-                <!-- الفورم ده بيجمع بيانات حجز تحليل -->
                 <form id="lab-form">
-
                     <label>الاسم بالكامل</label><br>
                     <input type="text" required><br><br>
-
                     <label>البريد الإلكتروني</label><br>
                     <input type="email" required><br><br>
-
                     <label>رقم الهاتف</label><br>
                     <input type="tel" required><br><br>
-
-                    <!-- هنا بنستقبل اسم التحليل (وبيتم ملؤه تلقائي من Book Now) -->
+                    <!-- الخانة دي بتتملي لوحدها لو اليوزر اختار باقة معينة من صفحة التحاليل -->[cite: 17]
                     <label>نوع التحليل:</label><br>
                     <input type="text" id="test-type-input" required><br><br>
-
                     <label>التاريخ</label><br>
                     <input type="date" required><br><br>
-
                     <input type="time" required><br><br>
-
                     <button type="submit">احجز الموعد</button>
                 </form>
             </details>
@@ -108,34 +70,23 @@
 
         <hr>
 
-        <!-- ====== DOCTOR BOOKING ====== -->
-        <!-- قسم حجز دكتور -->
         <section>
             <details>
                 <summary><h2>حجز دكتور</h2></summary>
-
                 <p>احجز موعد مع طبيب متخصص</p>
-
                 <form id="doctor-form">
-
                     <label>الاسم بالكامل:</label><br>
                     <input type="text" required><br><br>
-
                     <label>البريد الإلكتروني:</label><br>
                     <input type="email" required><br><br>
-
                     <label>رقم الهاتف:</label><br>
                     <input type="tel" required><br><br>
-
                     <label>التخصص:</label><br>
                     <input type="text" required><br><br>
-
                     <label>التاريخ:</label><br>
                     <input type="date" required><br><br>
-
                     <label>الوقت:</label><br>
                     <input type="time" required><br><br>
-
                     <button type="submit">احجز الموعد</button>
                 </form>
             </details>
@@ -143,39 +94,27 @@
 
         <hr>
 
-        <!-- ====== HOME VISIT ====== -->
-        <!-- قسم الزيارة المنزلية -->
         <section>
             <details>
                 <summary><h2>زيارة منزلية</h2></summary>
-
                 <p>نوفر خدمة سحب العينات من المنزل</p>
-
                 <form id="home-form">
-
                     <label>الاسم بالكامل:</label><br>
                     <input type="text" required><br><br>
-
                     <label>البريد الإلكتروني:</label><br>
                     <input type="email" required><br><br>
-
                     <label>رقم الهاتف:</label><br>
                     <input type="tel" required><br><br>
-
                     <label>العنوان:</label><br>
                     <input type="text" required><br><br>
-
                     <label>التاريخ:</label><br>
                     <input type="date" required><br><br>
-
                     <input type="time" required><br><br>
-
                     <label>التحاليل المطلوبة</label><br>
                     <textarea required></textarea><br><br>
-
+                    <!-- حقل رفع الملفات بيسمح للمريض يبعت صورة الروشتة عشان المعمل يجهز التحاليل -->[cite: 17]
                     <label>ارفع صورة الروشتة (اختياري)</label><br>
                     <input type="file"><br><br>
-
                     <button type="submit">اطلب زيارة</button>
                 </form>
             </details>
@@ -183,8 +122,6 @@
 
     </main>
 
-    <!-- ====== FOOTER ====== -->
-    <!-- آخر الصفحة وفيه الحقوق -->
     <footer>
         <hr>
         <p>© ٢٠٢٦ المعمل الطبي. جميع الحقوق محفوظة.</p>

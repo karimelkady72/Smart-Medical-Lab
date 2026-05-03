@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- الـ dir="rtl" هنا هي اللي بتخلي الـ Layout كله يقلب يمين لشمال عشان يظبط مع لغتنا العربية. -->
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -26,7 +25,7 @@
         <li><a href="contact-ar.html">تواصل معنا</a></li>
         <li><a href="about-ar.html">عن المعمل</a></li>
         <li><a href="login-ar.html">تسجيل الدخول</a></li>
-        <!-- زرار التحويل للإنجليزي بينده على دالةswitchToEnglish اللي بتغير مسار الصفحة بس بتشيل حتة الـ "-ar". -->
+        <!-- دالة switchToEnglish بتعرف هي في أنهي صفحة وتوديك للي زيها بالإنجليزي -->
         <li><a href="#" class="lang-switch" onclick="switchToEnglish()">English 🌐</a></li>
         <li>
             <label class="switch">
@@ -44,7 +43,7 @@
   <input type="text" id="searchInput" placeholder="ابحث ......">
 
   <div class="cards">
-    <!-- أي عنصر عايز اليوزر يقدر يبحث عنه لازم ياخد الـ class اللي اسمه analysis ده. -->
+    <!-- الكروت دي هي اللي بتختفي وتظهر في البحث بناءً على الكلام اللي جواها -->
     <div class="card analysis">CBC - صورة دم كاملة</div>
     <div class="card analysis">Glucose Test - تحليل سكر</div>
     <div class="card analysis">Cholesterol - دهون</div>
@@ -57,7 +56,7 @@
         <span class="price">٤٥٠ ج.م</span>
         <h3>وظائف الكبد</h3>
         <p>مجموعة تحاليل لفحص صحة وكفاءة الكبد</p>
-        <!-- هنا بنبعت اسم الباقة بالعربي عشان تظهر في خانة "اسم التحليل" في صفحة الحجز أوتوماتيك. -->
+        <!-- هنا بنبعت اسم الباقة بالعربي عشان تظهر في خانة "نوع التحليل" في صفحة الحجز أوتوماتيك -->
         <button onclick="window.location.href='services-ar.html?test=وظائف الكبد'">احجز الآن</button>
       </div>
 

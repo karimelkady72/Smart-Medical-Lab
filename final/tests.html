@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tests & Prices</title>
   <script src="Script.js"></script>
   <link rel="stylesheet" href="style.css">
   <script>
-    /* السكريبت ده مهمته يلحق يغير شكل الصفحة للـ Dark Mode قبل ما عينك تشوف اللون الأبيض، عشان "الرعشة" اللي بتحصل أول ما تفتح الصفحة. */
+    /* الحتة دي بتخلي الموقع يفتكر المود اللي كنت عليه (لايت ولا دارك) ويطبقه فوراً أول ما الصفحة تفتح */
     if (localStorage.getItem("theme") === "dark") {
       document.documentElement.classList.add("dark-mode");
     }
@@ -37,10 +38,10 @@
     </ul>
 </nav>
   <h1>Laboratory Tests</h1>
-  <!-- الـ id ده (searchInput) هو اللي الجافاسكريبت بتمسكه عشان تعمل فلترة للتحاليل اللي تحت وأنت بتكتب. -->
+  <!-- الـ ID ده هو اللي بنمسكه في الجافاسكريبت عشان نفلتر التحاليل اللي تحت وإنت بتكتب في المربع -->
   <input type="text" id="searchInput" placeholder="Search ......">
   <div class="cards">
-    <!-- الـ class اللي اسمه (analysis) هو "العلامة" اللي بتعرف الكود إن العنصر ده يدخل معانا في عملية البحث. -->
+    <!-- الـ class اللي اسمه (analysis) هو "العلامة" اللي بتعرف الكود إن العنصر ده يدخل معانا في عملية البحث -->
     <div class="card analysis">CBC - Complete Blood Count</div>
     <div class="card analysis">Glucose Test - تحليل سكر</div>
     <div class="card analysis">Cholesterol - دهون</div>
@@ -52,7 +53,7 @@
         <span class="price">EGP 450</span>
         <h3>Liver Profile</h3>
         <p>A group of tests to check liver health and function</p>
-        <!-- اللعبة كلها هنا.. بنبعت اسم التحليل في اللينك (Parameter) عشان صفحة الخدمات تفتحه وتكتبه لوحدها في المربع. -->
+        <!-- الزرار ده بيبعت اسم التحليل في اللينك (test=اسم_التحليل) عشان صفحة الخدمات تملأ البيانات لوحدها أول ما تفتح -->
         <button onclick="window.location.href='services.html?test=Liver Profile'">Book Now</button>
       </div>
       <div class="package">

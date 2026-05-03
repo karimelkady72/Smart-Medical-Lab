@@ -1,11 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services</title>
+
     <script src="Script.js"></script>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- هنا بنفحص لو المستخدم كان مفعّل dark mode قبل كده ونرجع نفس الوضع -->
     <script>
         if (localStorage.getItem("theme") === "dark") {
             document.documentElement.classList.add("dark-mode");
@@ -15,9 +21,15 @@
 
 <body>
 
+  <!-- النافبار: قائمة التنقل بين صفحات الموقع -->
   <nav>
+    <!-- checkbox ده بنستخدمه عشان نعمل menu للموبايل (toggle menu) -->
     <input type="checkbox" id="menu-toggle">
+
+    <!-- زر الهامبرجر اللي بيظهر في الموبايل وبيفتح/يقفل القائمة -->
     <label for="menu-toggle" class="hamburger">☰</label>
+
+    <!-- روابط التنقل الأساسية -->
     <ul>
         <li><a href="home.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
@@ -26,7 +38,11 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="login.html">Login</a></li>
+
+        <!-- زر تغيير اللغة من إنجليزي لعربي -->
         <li><a href="#" class="lang-switch" onclick="switchToArabic()">عربي 🌐</a></li>
+
+        <!-- زر تغيير الثيم (Light / Dark mode) -->
         <li>
             <label class="switch">
                 <input type="checkbox" id="theme-toggle">
@@ -39,21 +55,25 @@
     </ul>
   </nav>
 
+  <!-- عنوان الصفحة -->
   <header>
       <h1>Our Services</h1>
       <p>Book your service easily</p>
   </header>
 
   <main>
+
+    <!-- قسم حجز التحاليل -->
     <section>
-        <!-- الـ details والـ summary بيعملوا حركة الـ Accordion اللي بتفتح وتقفل القسم -->[cite: 20]
         <details>
+            <!-- details بيخلي القسم يفتح ويقفل بشكل accordion -->
             <summary><h2>Lab Tests</h2></summary>
 
             <p>Book any medical test from our lab</p>
 
-            <!-- الفورم ده واخد ID مميز عشان الجافاسكريبت تعرف تخزن بيانات الحجز في الـ localStorage -->[cite: 20]
+            <!-- فورم حجز التحليل -->
             <form id="lab-form">
+                <!-- بيانات المستخدم -->
                 <label>Full Name</label>
                 <input type="text" required>
 
@@ -63,16 +83,18 @@
                 <label>Phone Number</label>
                 <input type="tel" required>
 
-                <!-- الـ ID ده (test-type-input) مهم جداً لأنه اللي بيستقبل اسم التحليل لو اليوزر جاي من صفحة الباقات -->[cite: 20]
+                <!-- هنا اسم التحليل اللي بيتبعت للجافاسكريبت -->
                 <label>Test Type:</label>
                 <input type="text" id="test-type-input" required>
 
+                <!-- تاريخ ووقت الحجز -->
                 <label>Date</label>
                 <input type="date" required>
 
                 <label>Time:</label>
                 <input type="time" required>
 
+                <!-- زرار تأكيد الحجز -->
                 <button type="submit">Book Test</button>
             </form>
         </details>
@@ -80,23 +102,32 @@
 
     <hr>
 
+    <!-- قسم حجز دكتور -->
     <section>
         <details>
             <summary><h2>Doctor Appointment</h2></summary>
+
             <p>Book an appointment with a specialist doctor</p>
+
             <form id="doctor-form">
                 <label>Full Name:</label>
                 <input type="text" required>
+
                 <label>Email:</label>
                 <input type="email" required>
+
                 <label>Phone Number:</label>
                 <input type="tel" required>
+
                 <label>Specialty:</label>
                 <input type="text" required>
+
                 <label>Date:</label>
                 <input type="date" required>
+
                 <label>Time:</label>
                 <input type="time" required>
+
                 <button type="submit">Book Appointment</button>
             </form>
         </details>
@@ -104,27 +135,43 @@
 
     <hr>
 
+    <!-- قسم الزيارة المنزلية -->
     <section>
         <details>
             <summary><h2>Home Visit</h2></summary>
+
             <p>We provide home sample collection service</p>
+
             <form id="home-form">
                 <label>Full Name:</label>
                 <input type="text" required>
+
                 <label>Email:</label>
                 <input type="email" required>
+
                 <label>Phone Number:</label>
                 <input type="tel" required>
+
                 <label>Address:</label>
                 <input type="text" required>
+
                 <label>Date:</label>
                 <input type="date" required>
+
                 <label>Time:</label>
                 <input type="time" required>
+
+                <!-- التحاليل المطلوبة بيتكتبها المستخدم -->
                 <label>Requested Tests</label>
                 <textarea required></textarea>
+
+                <!-- رفع صورة روشتة لو موجودة -->
                 <label>Upload Prescription / Test Image (optinal)</label>
                 <input type="file">
+
+                <label>Preferred Time (10 AM - 10 PM)</label>
+
+                <!-- زر طلب الزيارة -->
                 <button type="submit">Request Visit</button>
             </form>
         </details>
@@ -132,6 +179,7 @@
 
   </main>
 
+  <!-- الفوتر -->
   <footer>
       <hr>
       <p>© 2026 Medical Lab. All rights reserved.</p>

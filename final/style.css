@@ -573,23 +573,26 @@ html[dir="rtl"] .logo {
   color: var(--primary-color);
 }
 
-/* الموبايل */
+/* --- تعديلات الموبايل والـ Responsive --- */
 @media (max-width: 768px) {
-  .logo {
-    position: static;
-    transform: none;
-    justify-content: flex-start; /* بدل center عشان ما يزقش اللينكات */
-    width: auto;
-    margin-bottom: 0;
-    gap: 8px;
-  }
-
+  /* اللوجو في الموبايل */
   .logo img {
-    width: 30px;
-    height: 30px;
+    height: 35px !important; /* صغرنا الطول عشان يناسب شاشة الموبايل */
+    width: auto; /* عشان يحافظ على أبعاده وما يتمطش */
   }
 
   .logo span {
-    font-size: 1rem;
+    font-size: 1.1rem; /* تصغير اسم BioScan شوية عشان المنيو تلاقي مكان[cite: 17] */
+  }
+
+  .logo {
+    gap: 8px; /* تقليل المسافة بين اللوجو والاسم في الموبايل[cite: 17] */
+    margin-left: 5px; /* زقة خفيفة من الشمال عشان ما يلزقش في حرف الشاشة[cite: 17] */
+  }
+
+  /* تأكيد إن الناف بار طوله يقل شوية في الموبايل عشان يوفر مساحة[cite: 17] */
+  nav {
+    height: 65px; 
+    padding: 0 15px; 
   }
 }

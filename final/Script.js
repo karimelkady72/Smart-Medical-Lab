@@ -256,3 +256,18 @@ function switchToEnglish() {
         window.location.href = pageName.replace("-ar.html", ".html");
     }
 }
+
+function goHome() {
+
+    // نفترض إنك بتخزن اللغة في localStorage
+    let lang = localStorage.getItem("lang");
+
+    // لو اللغة عربي
+    if (lang === "ar") {
+        window.location.href = "home-ar.html";
+    }
+    // لو إنجليزي أو أي حاجة تانية
+    else {
+        window.location.href = "home.html";
+    }
+}

@@ -21,34 +21,49 @@
 <body>
 
    <nav>
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="hamburger">☰</label>
 
-    <ul>
-        <li><a href="home-ar.html">الرئيسية</a></li>
-        <li><a href="services-ar.html">الخدمات</a></li>
-        <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
-        <li><a href="results-ar.html">النتائج</a></li>
-        <li><a href="contact-ar.html">تواصل معنا</a></li>
-        <li><a href="about-ar.html">عن المعمل</a></li>
-        <li><a href="login-ar.html">تسجيل الدخول</a></li>
+  <!-- اللوجو + اسم المعمل -->
+  <a href="#" class="logo" onclick="goHome()">
+    <img src="logo.png" alt="BioScan Logo">
+    <span>BioScan</span>
+  </a>
 
-        <li><a href="#" class="lang-switch" onclick="switchToEnglish()">English 🌐</a></li>
-        <!-- تبديل اللغة -->
+  <!-- عنصر التحكم في المينيو (موبايل) -->
+  <input type="checkbox" id="menu-toggle">
 
-        <li>
-            <label class="switch">
-                <input type="checkbox" id="theme-toggle">
+  <!-- زر الهامبرجر -->
+  <label for="menu-toggle" class="hamburger">☰</label>
 
-                <span class="slider">
-                    <span class="icon sun">☀️</span>
-                    <span class="icon moon">🌙</span>
-                </span>
-            </label>
-        </li>
-    </ul>
-  </nav>
+  <ul>
 
+      <li><a href="home-ar.html">الرئيسية</a></li>
+      <li><a href="services-ar.html">الخدمات</a></li>
+      <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
+      <li><a href="results-ar.html">النتائج</a></li>
+      <li><a href="contact-ar.html">تواصل معنا</a></li>
+      <li><a href="about-ar.html">عن المعمل</a></li>
+      <li><a href="login-ar.html">تسجيل الدخول</a></li>
+
+      <!-- تغيير اللغة -->
+      <li>
+          <a href="#" class="lang-switch" onclick="switchToEnglish()">
+              English 🌐
+          </a>
+      </li>
+
+      <!-- الوضع الليلي -->
+      <li>
+          <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider">
+                  <span class="icon sun">☀️</span>
+                  <span class="icon moon">🌙</span>
+              </span>
+          </label>
+      </li>
+
+  </ul>
+</nav>
   <header class="header">
     <h1>مواعيدك المحجوزة</h1>
   </header>

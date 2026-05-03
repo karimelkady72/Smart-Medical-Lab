@@ -21,39 +21,50 @@
 <body>
 
   <!-- شريط التنقل -->
-  <nav>
+ <nav>
 
-    <!-- عنصر للتحكم في فتح وقفل المينيو في الموبايل -->
-    <input type="checkbox" id="menu-toggle">
+  <!-- اللوجو + اسم المعمل -->
+  <a href="#" class="logo" onclick="goHome()">
+    <img src="logo.png" alt="BioScan Logo">
+    <span>BioScan</span>
+  </a>
 
-    <!-- زرار فتح المينيو -->
-    <label for="menu-toggle" class="hamburger">☰</label>
+  <!-- عنصر التحكم في المينيو (موبايل) -->
+  <input type="checkbox" id="menu-toggle">
 
-    <!-- روابط الصفحات -->
-    <ul>
-        <li><a href="home-ar.html">الرئيسية</a></li>
-        <li><a href="services-ar.html">الخدمات</a></li>
-        <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
-        <li><a href="results-ar.html">النتائج</a></li>
-        <li><a href="contact-ar.html">تواصل معنا</a></li>
-        <li><a href="about-ar.html">عن المعمل</a></li>
-        <li><a href="login-ar.html">تسجيل الدخول</a></li>
+  <!-- زر الهامبرجر -->
+  <label for="menu-toggle" class="hamburger">☰</label>
 
-        <!-- زرار تغيير اللغة -->
-        <li><a href="#" class="lang-switch" onclick="switchToEnglish()">English 🌐</a></li>
+  <ul>
 
-        <li>
-            <!-- زرار تشغيل وإيقاف الوضع الليلي -->
-            <label class="switch">
-                <input type="checkbox" id="theme-toggle">
-                <span class="slider">
-                    <span class="icon sun">☀️</span>
-                    <span class="icon moon">🌙</span>
-                </span>
-            </label>
-        </li>
-    </ul>
-  </nav>
+      <li><a href="home-ar.html">الرئيسية</a></li>
+      <li><a href="services-ar.html">الخدمات</a></li>
+      <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
+      <li><a href="results-ar.html">النتائج</a></li>
+      <li><a href="contact-ar.html">تواصل معنا</a></li>
+      <li><a href="about-ar.html">عن المعمل</a></li>
+      <li><a href="login-ar.html">تسجيل الدخول</a></li>
+
+      <!-- تغيير اللغة -->
+      <li>
+          <a href="#" class="lang-switch" onclick="switchToEnglish()">
+              English 🌐
+          </a>
+      </li>
+
+      <!-- الوضع الليلي -->
+      <li>
+          <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider">
+                  <span class="icon sun">☀️</span>
+                  <span class="icon moon">🌙</span>
+              </span>
+          </label>
+      </li>
+
+  </ul>
+</nav>
 
   <!-- الجزء الرئيسي في بداية الصفحة -->
   <div class="hero">

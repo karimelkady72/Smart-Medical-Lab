@@ -1,4 +1,4 @@
-/* شكل الفونط*/
+/* هنا بنجيب خط "Cairo" من جوجل عشان الموقع يبقى شكله مودرن والكلام واضح للقراءة */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
 
 /* الـ Root ده هو المخزن بتاعنا.. حطينا فيه متغيرات الألوان والظلال عشان نغيرها من هنا مرة واحدة فتسمع في الموقع كله */
@@ -46,22 +46,33 @@ a { text-decoration: none; color: inherit; }
 
 /* الـ Navbar (شريط التنقل).. ثابت فوق دايمًا (fixed) عشان يبقى قدام اليوزر في أي وقت */
 nav {
-  background-color: var(--white); padding: 15px 5%;
-  box-shadow: var(--shadow-sm); position: fixed;
-  top: 0; left: 0; width: 100%; z-index: 2000;
-  display: flex; justify-content: center; align-items: center;
+  background-color: var(--white);
+  padding: 15px 5%;
+  box-shadow: var(--shadow-sm);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
 }
 
 /* بنرص لينكات المنيو جنب بعضها بمسافات متساوية */
 nav ul {
-  list-style: none; display: flex; gap: 30px;
-  flex-wrap: wrap; align-items: center;
+  list-style: none;
+  display: flex;
+  gap: 45px; /* تقدر تقللها لـ 40 لو حابب */
+  align-items: center;
+  margin: 0 auto;
+  justify-content: center;
+  flex-wrap: nowrap; /* مهم جدًا عشان ما ينزلوش تحت بعض */
 }
-
 /* تنسيق اللينك نفسه وتقل الخط */
 nav ul li a {
   font-weight: 600; color: var(--text-dark);
-  position: relative; padding: 5px 0; transition: var(--transition);
+  position: relative; padding: 5px 0; transition: var(--transition);letter-spacing: 0.5px
 }
 
 /* الخط الأزرق اللي بيظهر تحت اللينك لما نعدي عليه بالماوس (Hover Effect) */
@@ -525,3 +536,51 @@ nav ul li a.lang-switch::after {
     color: white;
     border-color: #333;
 }
+
+/* ===== LOGO IN NAVBAR ===== */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  position: static;
+}
+
+/* وضع اللوجو في اللغة الإنجليزية (شمال) */
+html[dir="ltr"] .logo {
+  left: 20px;
+  right: auto;
+}
+
+/* وضع اللوجو في اللغة العربية (يمين) */
+html[dir="rtl"] .logo {
+  right: 20px;
+  left: auto;
+}
+
+/* صورة اللوجو */
+.logo img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+/* اسم المعمل */
+.logo span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* الموبايل */
+@media (max-width: 768px) {
+  .logo {
+    position: static;
+    transform: none;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+

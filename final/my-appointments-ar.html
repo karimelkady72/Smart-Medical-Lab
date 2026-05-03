@@ -3,14 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>مواعيدي</title>
+
   <link rel="stylesheet" href="style.css">
+  <!-- ربط ملف الـ CSS بتاع التصميم -->
+
   <script src="Script.js"></script>
-  <script>if(localStorage.getItem("theme")==="dark") document.documentElement.classList.add("dark-mode");</script>
+  <!-- ربط الجافاسكريبت اللي فيه منطق الصفحة -->
+
+  <script>
+    if(localStorage.getItem("theme")==="dark")
+      document.documentElement.classList.add("dark-mode");
+  </script>
+  <!-- تفعيل الوضع الداكن لو المستخدم مختاره قبل كده -->
 </head>
+
 <body>
+
    <nav>
     <input type="checkbox" id="menu-toggle">
     <label for="menu-toggle" class="hamburger">☰</label>
+
     <ul>
         <li><a href="home-ar.html">الرئيسية</a></li>
         <li><a href="services-ar.html">الخدمات</a></li>
@@ -19,10 +31,14 @@
         <li><a href="contact-ar.html">تواصل معنا</a></li>
         <li><a href="about-ar.html">عن المعمل</a></li>
         <li><a href="login-ar.html">تسجيل الدخول</a></li>
+
         <li><a href="#" class="lang-switch" onclick="switchToEnglish()">English 🌐</a></li>
+        <!-- تبديل اللغة -->
+
         <li>
             <label class="switch">
                 <input type="checkbox" id="theme-toggle">
+
                 <span class="slider">
                     <span class="icon sun">☀️</span>
                     <span class="icon moon">🌙</span>
@@ -31,14 +47,23 @@
         </li>
     </ul>
   </nav>
+
   <header class="header">
     <h1>مواعيدك المحجوزة</h1>
   </header>
+
   <main style="padding: 20px 5%;">
+
     <div id="appointment-list" class="card">
-        <!-- المواعيد هتظهر هنا بالجافاسكريبت -->
+        <!-- هنا الجافاسكريبت هيعرض المواعيد -->
     </div>
-    <button onclick="localStorage.removeItem('myAppointments'); location.reload();" style="background: red; margin-top: 20px;">مسح جميع المواعيد</button>
+
+    <button onclick="localStorage.removeItem('myAppointments'); location.reload();" style="background: red; margin-top: 20px;">
+      مسح جميع المواعيد
+    </button>
+    <!-- مسح كل المواعيد المخزنة وإعادة تحميل الصفحة -->
+
   </main>
+
 </body>
 </html>

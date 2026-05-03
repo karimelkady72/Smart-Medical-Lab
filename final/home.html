@@ -2,22 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <!-- المتا دي مهمة عشان الصفحة تبقى responsive على الموبايل -->
   <meta name="viewport" content="width=device-width, initial-scale=.8">
+
+  <!-- ملف التنسيق المسؤول عن شكل الصفحة -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- ملف الجافاسكريبت للتفاعل -->
   <script src="Script.js"></script>
+
   <title>Dashboard</title>
+
   <script>
+    // لو المستخدم كان مفعل الوضع الليلي قبل كدا بنرجعه تلقائي
     if (localStorage.getItem("theme") === "dark") {
       document.documentElement.classList.add("dark-mode");
     }
   </script>
 </head>
 <body>
+
+  <!-- الهيدر الرئيسي -->
   <header class="header">
+
     <h2>Clinical Precision</h2>
+
     <nav>
+
+    <!-- عنصر للتحكم في فتح وقفل المينيو في الموبايل -->
     <input type="checkbox" id="menu-toggle">
+
+    <!-- زرار فتح المينيو -->
     <label for="menu-toggle" class="hamburger">☰</label>
+
+    <!-- روابط الصفحات -->
     <ul>
         <li><a href="home.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
@@ -26,8 +45,12 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="login.html">Login</a></li>
+
+        <!-- زر تغيير اللغة -->
         <li><a href="#" class="lang-switch" onclick="switchToArabic()">عربي 🌐</a></li>
+
         <li>
+            <!-- زر تشغيل وإيقاف الوضع الليلي -->
             <label class="switch">
                 <input type="checkbox" id="theme-toggle">
                 <span class="slider">
@@ -38,61 +61,110 @@
         </li>
     </ul>
 </nav>
+
+    <!-- رسالة ترحيب -->
     <div class="welcome">
       <h1>Welcome </h1>
       <p>We are here to care for your health.</p>
     </div>
+
   </header>
+
+  <!-- كروت سريعة للوصول للخدمات -->
   <section class="cards">
+
+    <!-- كارت المواعيد -->
     <div class="card">
       <h3>Upcoming Appointments</h3>
+
+      <!-- تحويل لصفحة المواعيد -->
       <button onclick="window.location.href='my-appointments.html'">View Appointments</button>
     </div>
+
+    <!-- كارت النتائج -->
     <div class="card">
       <h3>Lab Results</h3>
       <p>View your test results</p>
+
+      <!-- تحويل لصفحة النتائج -->
       <button onclick="window.location.href='results.html'">View Results</button>
     </div>
+
+    <!-- كارت مميز للحجز -->
     <div class="card highlight">
       <h3>Book New Test</h3>
       <p>Start now and book your test</p>
+
+      <!-- تحويل لصفحة الخدمات -->
       <button class="btn-white" onclick="window.location.href='services.html'">Book Now</button>
     </div>
+
   </section>
+
+  <!-- الجزء الرئيسي في الداشبورد -->
   <section class="dashboard">
+
+    <!-- الجانب الشمال -->
     <div class="left-side">
+
+      <!-- كارت نصيحة -->
       <div class="health-tip">
         <h4>Health Tip</h4>
         <p>Drink enough water daily and maintain a balanced diet for better health.</p>
+
+        <!-- تحويل لصفحة معلومات -->
         <button onclick="window.location.href='about.html'">Read More</button>
       </div>
+
+      <!-- جزء الإحصائيات -->
       <div class="stats">
+
         <p>Blood Sugar</p>
+
+        <!-- شريط بيوضح النسبة -->
         <div class="bar"><div class="fill" style="width:70%"></div></div>
+
         <p>Blood Pressure</p>
+
+        <!-- شريط تاني -->
         <div class="bar"><div class="fill" style="width:50%"></div></div>
+
       </div>
     </div>
+
+    <!-- الجانب اليمين -->
     <div class="right-side">
+
+      <!-- النشاطات الأخيرة -->
       <div class="recent-activity">
         <h3>Recent Activity</h3>
+
+        <!-- عنصر نشاط -->
         <div class="activity-item">
           <p>Complete Blood Count (CBC)</p>
           <span>Done - 19 , April, 2026 </span>
         </div>
+
         <div class="activity-item">
           <p>Home Visit - Sample Collection</p>
           <span> 19 April - 09:30 AM</span>
         </div>
+
       </div>
     </div>
+
   </section>
+
+  <!-- الفوتر -->
   <footer class="footer">
     <p>© 2026 All rights reserved</p>
+
+    <!-- روابط إضافية -->
     <div class="footer-links">
       <a href="#">Privacy Policy</a>
       <a href="#">Terms & Conditions</a>
     </div>
   </footer>
+
 </body>
 </html>

@@ -2,13 +2,20 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
+
+  <!-- عشان الصفحة تبقى responsive على كل الأجهزة -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Login</title>
-  
-  <script src="/Script.js"></script>
+
+  <!-- ملف الجافاسكريبت المسؤول عن التفاعل -->
+  <script src="Script.js"></script>
+
+  <!-- ملف التنسيق الرئيسي -->
   <link rel="stylesheet" href="style.css">
-  
+
   <script>
+    // لو المستخدم مفعّل الدارك مود قبل كدا بنرجعه تلقائي
     if (localStorage.getItem("theme") === "dark") {
       document.documentElement.classList.add("dark-mode");
     }
@@ -16,9 +23,16 @@
 </head>
 <body>
 
-   <nav>
+  <!-- شريط التنقل -->
+  <nav>
+
+    <!-- عنصر للتحكم في المينيو في الموبايل -->
     <input type="checkbox" id="menu-toggle">
+
+    <!-- زر فتح المينيو -->
     <label for="menu-toggle" class="hamburger">☰</label>
+
+    <!-- روابط الموقع -->
     <ul>
         <li><a href="home.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
@@ -27,10 +41,12 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="login.html">Login</a></li>
-        
+
+        <!-- زر تغيير اللغة -->
         <li><a href="#" class="lang-switch" onclick="switchToArabic()">عربي 🌐</a></li>
-        
+
         <li>
+            <!-- زر الوضع الليلي -->
             <label class="switch">
                 <input type="checkbox" id="theme-toggle">
                 <span class="slider">
@@ -40,35 +56,57 @@
             </label>
         </li>
     </ul>
-</nav>
+  </nav>
 
+  <!-- الكونتينر الرئيسي للصفحة -->
   <div class="container">
+
+    <!-- الجزء الشمال (تصميم + رسالة ترحيب) -->
     <div class="left">
+
+      <!-- طبقة overlay فوق الخلفية -->
       <div class="overlay">
+
         <h1>Welcome to the Future of Healthcare</h1>
-        <p>We combine precision and advanced technology to deliver accurate lab results in a safe and reliable environment.</p>
+
+        <p>
+          We combine precision and advanced technology to deliver accurate lab results in a safe and reliable environment.
+        </p>
+
+        <!-- مميزات الموقع -->
         <div class="features">
           <div class="box">Fast Results</div>
           <div class="box">Advanced Technology</div>
         </div>
+
       </div>
     </div>
 
+    <!-- الجزء اليمين (الفورم) -->
     <div class="right">
+
       <h2>Login</h2>
       <p class="sub">Access your account easily</p>
-      
-      <!-- بعد ما يسجل دخول صح، هيحوله لصفحة الهوم -->
+
+      <!-- فورم تسجيل الدخول -->
       <form action="home.html">
+
+        <!-- إدخال الإيميل أو رقم الهاتف -->
         <input type="email" placeholder="Email or Phone" required>
+
+        <!-- إدخال كلمة المرور -->
         <input type="password" placeholder="Password" required>
+
+        <!-- زر تسجيل الدخول -->
         <button type="submit">Login</button>
+
       </form>
 
-      <!-- زرار التحويل لصفحة إنشاء الحساب -->
+      <!-- لينك التسجيل -->
       <div class="switch">
         Don't have an account? <a href="register.html">Register</a>
       </div>
+
     </div>
   </div>
 

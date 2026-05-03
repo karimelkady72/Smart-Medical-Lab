@@ -8,18 +8,20 @@
     <script src="/Script.js"></script>
     <link rel="stylesheet" href="style.css">
     <script>
+        /* السكريبت ده بيخطف الثيم بتاعك من الـ LocalStorage أول ما تفتح الصفحة عشان لو كنت على الدارك مود يلحق يغيرها قبل ما عينك تزغلل. */
         if (localStorage.getItem("theme") === "dark") {
             document.documentElement.classList.add("dark-mode");
         }
     </script>
     <style>
-        /* ستايل إضافي لصفحة التفعيل بس */
+        /* التنسيقات دي معمولة بس لصفحة التفعيل عشان تظبط شكل الـ 4 مربعات بتوع الكود والمسافات اللي بينهم. */
         .verify-code-inputs {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-bottom: 20px;
         }
+        /* هنا خلينا المربعات مقاسها 50px في 50px وخلينا الخط تقيل وفي النص عشان يبقى واضح لليوزر. */
         .verify-code-inputs input {
             width: 50px;
             height: 50px;
@@ -31,6 +33,7 @@
             background-color: var(--bg-main);
             color: var(--text-dark);
         }
+        /* الحركة دي بتعمل ظل أزرق خفيف لما اليوزر يقف على المربع عشان يعرف هو بيكتب فين حالياً. */
         .verify-code-inputs input:focus {
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
@@ -83,11 +86,11 @@
                 We have sent a 4-digit code to your email/phone. Please enter it below.
             </p>
 
-            <!-- الفورم اللي بيودي لصفحة اللوجن بعد التأكيد -->
+            <!-- هنا الفورم مربوط بـ "onsubmit" عشان نطلع رسالة تأكيد لليوزر قبل ما نحوله لصفحة تسجيل الدخول. -->
             <form action="login.html" onsubmit="return alert('Account verified successfully! Please login.');">
                 
                 <div class="verify-code-inputs">
-                    <!-- حقول الكود 4 أرقام -->
+                    <!-- الـ maxlength="1" دي عشان المربع مياخدش أكتر من رقم واحد بس، والـ onkeyup بتنادي الدالة اللي بتنقلنا للمربع اللي بعده. -->
                     <input type="text" maxlength="1" required autocomplete="off" onkeyup="moveToNext(this, 'box2')">
                     <input type="text" id="box2" maxlength="1" required autocomplete="off" onkeyup="moveToNext(this, 'box3')">
                     <input type="text" id="box3" maxlength="1" required autocomplete="off" onkeyup="moveToNext(this, 'box4')">
@@ -103,8 +106,8 @@
         </div>
     </div>
 
-    <!-- كود جافاسكريبت صغير عشان ينقل الماوس أوتوماتيك للمربع اللي بعده -->
     <script>
+        /* الدالة دي هي اللي بتعمل السحر كله، بتشوف إنت كتبت كام حرف، وأول ما توصل للحد الأقصى بتبعتك للمربع اللي بعده أوتوماتيك. */
         function moveToNext(current, nextFieldID) {
             if (current.value.length >= current.maxLength) {
                 document.getElementById(nextFieldID).focus();

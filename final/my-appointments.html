@@ -3,14 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>My Appointments</title>
+
   <link rel="stylesheet" href="style.css">
+  <!-- ربط ملف التصميم الأساسي للصفحة -->
+
   <script src="Script.js"></script>
-  <script>if(localStorage.getItem("theme")==="dark") document.documentElement.classList.add("dark-mode");</script>
+  <!-- ربط ملف الجافاسكريبت اللي فيه منطق عرض وحذف المواعيد -->
+
+  <script>
+    if(localStorage.getItem("theme")==="dark")
+      document.documentElement.classList.add("dark-mode");
+  </script>
+  <!-- تفعيل الوضع الداكن لو كان المستخدم مختاره قبل كده -->
 </head>
+
 <body>
+
   <nav>
     <input type="checkbox" id="menu-toggle">
     <label for="menu-toggle" class="hamburger">☰</label>
+
     <ul>
         <li><a href="home.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
@@ -19,10 +31,14 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="login.html">Login</a></li>
+
         <li><a href="#" class="lang-switch" onclick="switchToArabic()">عربي 🌐</a></li>
+        <!-- زر تغيير اللغة -->
+
         <li>
             <label class="switch">
                 <input type="checkbox" id="theme-toggle">
+
                 <span class="slider">
                     <span class="icon sun">☀️</span>
                     <span class="icon moon">🌙</span>
@@ -30,15 +46,25 @@
             </label>
         </li>
     </ul>
-</nav>
+  </nav>
+
   <header class="header">
     <h1>Your Booked Appointments</h1>
   </header>
+
   <main style="padding: 20px 5%;">
+
     <div id="appointment-list" class="card">
-        <!-- المواعيد تظهر هنا بواسطة الجافاسكريبت -->
+        <!-- هنا الجافاسكريبت هيعرض كل المواعيد المحفوظة -->
     </div>
-    <button onclick="localStorage.removeItem('myAppointments'); location.reload();" style="background: red; margin-top: 20px; color: white;">Clear All Appointments</button>
+
+    <button onclick="localStorage.removeItem('myAppointments'); location.reload();"
+            style="background: red; margin-top: 20px; color: white;">
+      Clear All Appointments
+    </button>
+    <!-- زرار لمسح كل المواعيد من localStorage وإعادة تحميل الصفحة -->
+
   </main>
+
 </body>
 </html>

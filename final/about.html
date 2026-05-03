@@ -1,33 +1,38 @@
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
   <meta charset="UTF-8">
-
-  <!-- عشان الصفحة تبقى مظبوطة على الموبايل -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>About Lab</title>
 
-  <!-- الفونت اللي مستخدمينه في الموقع -->
+  <!-- استدعاء الخط المستخدم في الموقع -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!--ملف الجافا-->
-  <script src="/Script.js"></script>
-  <!-- ملف التصميم -->
+
+  <!-- ملف الجافاسكريبت اللي فيه الأكواد الخاصة بالتفاعل -->
+  <script src="Script.js"></script>
+
+  <!-- ملف التنسيق المسؤول عن شكل الصفحة -->
   <link rel="stylesheet" href="style.css">
+
   <script>
+    // لو المستخدم كان مفعل الوضع الليلي قبل كدا بنرجعه تلقائي
     if (localStorage.getItem("theme") === "dark") {
       document.documentElement.classList.add("dark-mode");
     }
   </script>
 </head>
-
 <body>
 
-
-  <!-- الناف بار اللي فيه لينكات التنقل بين الصفحات -->
+  <!-- شريط التنقل الرئيسي -->
   <nav>
+
+    <!-- عنصر بنستخدمه للتحكم في فتح وقفل المينيو في الموبايل -->
     <input type="checkbox" id="menu-toggle">
+
+    <!-- زرار شكله 3 خطوط لفتح المينيو -->
     <label for="menu-toggle" class="hamburger">☰</label>
+
+    <!-- قائمة الروابط -->
     <ul>
         <li><a href="home.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
@@ -36,10 +41,12 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="login.html">Login</a></li>
-        
+
+        <!-- زرار تغيير اللغة -->
         <li><a href="#" class="lang-switch" onclick="switchToArabic()">عربي 🌐</a></li>
-        
+
         <li>
+            <!-- زرار تشغيل وإيقاف الوضع الليلي -->
             <label class="switch">
                 <input type="checkbox" id="theme-toggle">
                 <span class="slider">
@@ -49,64 +56,63 @@
             </label>
         </li>
     </ul>
-</nav>
-  <!-- الجزء اللي فوق (العنوان الرئيسي + وصف سريع) -->
+  </nav>
+
+  <!-- الجزء الرئيسي في بداية الصفحة -->
   <div class="hero">
     <h1>Medical Lab</h1>
     <p>Providing accurate and reliable diagnostic services for over 15 years with expert staff and modern technology</p>
   </div>
 
-  <!-- شريط فيه أرقام وإحصائيات عن المعمل -->
+  <!-- قسم الإحصائيات -->
   <div class="stats-strip">
     <div class="stats-grid">
+
+      <!-- عنصر بيعرض رقم -->
       <div class="stat-item">
+        <!-- الرقم بيتغير تلقائي باستخدام الجافاسكريبت -->
         <div class="stat-num" data-target="50000" data-prefix="+">0</div>
         <div class="stat-label">Patients Served</div>
       </div>
+
       <div class="stat-item">
         <div class="stat-num" data-target="200" data-prefix="+">0</div>
         <div class="stat-label">Available Tests</div>
       </div>
+
       <div class="stat-item">
-        <div class="stat-num" data-target="15">0</div>
+        <div class="stat-num" data-target="15" data-prefix="+">0</div>
         <div class="stat-label">Years Experience</div>
       </div>
+
       <div class="stat-item">
+        <!-- هنا بنضيف علامة النسبة المئوية بعد الرقم -->
         <div class="stat-num" data-target="98" data-suffix="%">0</div>
         <div class="stat-label">Customer Satisfaction</div>
       </div>
+
     </div>
-</div>
+  </div>
 
   <main>
 
-    <!-- سيكشن تعريف بالمعمل -->
+    <!-- قسم التعريف بالمكان -->
     <section>
       <h2 class="sec-title">Who We Are</h2>
 
-      <!-- كارت فيه الكلام التعريفي -->
+      <!-- كارت لعرض المحتوى بشكل منظم -->
       <div class="about-card">
-        <p>
-          <span class="highlight">Medical Lab</span> was established in 2010 by a group of specialized doctors to
-          provide fast and accurate diagnostic services.
-        </p>
-
-        <p>
-          We believe accurate diagnosis is the first step to proper treatment, so we invest in the latest technologies
-          and continuous training.
-        </p>
-
-        <p>
-          We also provide <span class="highlight">home visit services</span> and fast online result delivery.
-        </p>
+        <p><span class="highlight">Medical Lab</span> was established in 2010 by a group of specialized doctors to provide fast and accurate diagnostic services.</p>
+        <p>We believe accurate diagnosis is the first step to proper treatment, so we invest in the latest technologies and continuous training.</p>
+        <p>We also provide <span class="highlight">home visit services</span> and fast online result delivery.</p>
       </div>
     </section>
 
-    <!-- سيكشن القيم بتاعت المعمل -->
+    <!-- قسم القيم -->
     <section>
       <h2 class="sec-title">Our Values</h2>
 
-      <!-- جريد عشان نعرض القيم جنب بعض -->
+      <!-- ترتيب العناصر جنب بعض -->
       <div class="values-grid">
 
         <!-- كل كارت بيمثل قيمة -->
@@ -133,15 +139,15 @@
       </div>
     </section>
 
-    <!-- سيكشن تاريخ المعمل وتطوره -->
+    <!-- قسم عرض التاريخ -->
     <section>
       <h2 class="sec-title">Our Journey</h2>
 
       <div class="about-card">
-        <!-- تايم لاين بيعرض الأحداث بالسنين -->
+
+        <!-- عرض الأحداث بالسنين -->
         <div class="timeline">
 
-          <!-- كل عنصر سنة + حدث -->
           <div class="timeline-item">
             <div class="timeline-year">2010</div>
             <div class="timeline-text">Lab established</div>
@@ -166,12 +172,12 @@
       </div>
     </section>
 
-    <!-- جزء فيه دعوة إن اليوزر يحجز أو يتواصل -->
+    <!-- جزء بيشجع المستخدم يعمل إجراء -->
     <div class="cta-block">
       <h3>Ready to book your test?</h3>
       <p>Our team is ready to help you</p>
 
-      <!-- أزرار الحجز والتواصل -->
+      <!-- أزرار التنقل -->
       <div class="cta-btns">
         <a href="services.html">Book Now</a>
         <a href="contact.html">Contact Us</a>
@@ -180,11 +186,8 @@
 
   </main>
 
-  <!-- الفوتر اللي فيه حقوق الموقع -->
-  <footer>
-    All rights reserved © 2026 | <span>Medical Lab</span>
-  </footer>
+  <!-- نهاية الصفحة -->
+  <footer>All rights reserved © 2026 | <span>Medical Lab</span></footer>
 
 </body>
-
 </html>

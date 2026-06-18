@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- هنا الـ dir="rtl" مهمة جداً عشان الصفحة كلها تقلب يمين لشمال وتظبط مع لغتنا العربية. -->
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفعيل الحساب</title>
+    <script src="Script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
+    <style>
+        /* المربعات هنا واخدة ستايل الـ Flex عشان يفضلوا مرصوصين جنب بعض حتى لو فتحت من موبايل شاشته صغيرة. */
+        .verify-code-inputs { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .verify-code-inputs input { width: 50px; height: 50px; text-align: center; font-size: 1.5rem; font-weight: bold; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--bg-main); color: var(--text-dark); }
+        .verify-code-inputs input:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15); }
+        .resend-text { text-align: center; font-size: 0.9rem; margin-top: 15px; }
+        .resend-text a { color: var(--primary-color); font-weight: 600; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <nav>
+
+  <!-- اللوجو + اسم المعمل -->
+  <a href="#" class="logo" onclick="goHome()">
+    <img src="logo.png" alt="BioScan Logo">
+    <span>BioScan</span>
+  </a>
+
+  <!-- عنصر التحكم في المينيو (موبايل) -->
+  <input type="checkbox" id="menu-toggle">
+
+  <!-- زر الهامبرجر -->
+  <label for="menu-toggle" class="hamburger">☰</label>
+
+  <ul>
+
+      <li><a href="home-ar.html">الرئيسية</a></li>
+      <li><a href="services-ar.html">الخدمات</a></li>
+      <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
+      <li><a href="results-ar.html">النتائج</a></li>
+      <li><a href="contact-ar.html">تواصل معنا</a></li>
+      <li><a href="about-ar.html">عن المعمل</a></li>
+      <li><a href="login-ar.html">تسجيل الدخول</a></li>
+
+      <!-- تغيير اللغة -->
+      <li>
+          <a href="#" class="lang-switch" onclick="switchToEnglish()">
+              English 🌐
+          </a>
+      </li>
+
+      <!-- الوضع الليلي -->
+      <li>
+          <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider">
+                  <span class="icon sun">☀️</span>
+                  <span class="icon moon">🌙</span>
+              </span>
+          </label>
+      </li>
+
+  </ul>
+</nav>
+
+    <div class="container" style="max-width: 600px; margin-top: 120px;">
+        <div class="right" style="padding: 40px;">
+            <h2 style="text-align: center; margin-bottom: 10px;">رمز التفعيل</h2>
+            <p class="sub" style="text-align: center; margin-bottom: 30px;">
+                لقد أرسلنا كود من ٤ أرقام إلى بريدك/هاتفك. يرجى إدخاله بالأسفل.
+            </p>
+
+            <form action="login-ar.html" onsubmit="return alert('تم تفعيل الحساب بنجاح! يرجى تسجيل الدخول.');">
+                <div class="verify-code-inputs">
+                    <!-- الـ autocomplete="off" مهمة هنا عشان المتصفح ميبوظش شكل المربعات باقتراحات قديمة. -->
+                    <input type="text" maxlength="1" required autocomplete="off" onkeyup="moveToNext(this, 'box2')">
+                    <input type="text" id="box2" maxlength="1" required autocomplete="off" onkeyup="moveToNext(this, 'box3')">
+                    <input type="text" id="box3" maxlength="1" required autocomplete="off" onkeyup="moveToNext(this, 'box4')">
+                    <input type="text" id="box4" maxlength="1" required autocomplete="off">
+                </div>
+                <button type="submit" style="width: 100%;">تفعيل ومتابعة</button>
+            </form>
+
+            <div class="resend-text">
+                لم تستلم الكود؟ <a onclick="alert('تم إرسال كود جديد.')">إعادة إرسال</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* الدالة دي وظيفتها تحسن تجربة المستخدم (UX)، فبدل ما يضطر يدوس كليك على كل مربع، هي بتنقله لوحدها بمجرد ما يكتب الرقم. */
+        function moveToNext(current, nextFieldID) {
+            if (current.value.length >= current.maxLength) {
+                document.getElementById(nextFieldID).focus();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,598 @@
+/* هنا بنجيب خط "Cairo" من جوجل عشان الموقع يبقى شكله مودرن والكلام واضح للقراءة */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
+
+/* الـ Root ده هو المخزن بتاعنا.. حطينا فيه متغيرات الألوان والظلال عشان نغيرها من هنا مرة واحدة فتسمع في الموقع كله */
+:root {
+  --primary-color: rgb(29, 78, 216); /* اللون الأزرق الأساسي للمعمل */
+  --secondary-color: rgb(23, 37, 84); /* أزرق غامق للهيدر والحاجات التقيلة */
+  --accent-color: rgb(239, 246, 255); /* لون خفيف للخلفيات الفرعية */
+  --text-dark: rgb(30, 41, 59); /* لون الكلام الأساسي */
+  --text-light: rgb(71, 85, 105); /* لون كلام أخف شوية للوصف */
+  --bg-main: rgb(248, 250, 252); /* لون خلفية الموقع */
+  --white: rgb(255, 255, 255); /* اللون الأبيض الصريح */
+  --border-color: rgb(226, 232, 240); /* لون الحدود (Borders) */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05); /* ظل خفيف */
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1); /* ظل متوسط للكروت */
+  --shadow-hover: 0 20px 25px -5px rgba(29, 78, 216, 0.15); /* ظل بيظهر لما نعدي بالماوس */
+  --transition: all 0.3s ease-in-out; /* حركة ناعمة لأي تغيير بيحصل (Animation) */
+}
+
+/* الجزء ده بيشتغل لما اليوزر يفعل "الدارك مود".. بنقلب الألوان لدرجات غامقة عشان راحة العين */
+.dark-mode {
+  --bg-main: #121212;
+  --white: #1e1e1e;
+  --text-dark: #ffffff;
+  --text-light: #ffffff;
+  --border-color: #333;
+  --accent-color: #1a2332;
+}
+
+/* بنصفر أي مسافات زيادة (Margin/Padding) المتصفح بيحطها من عنده، وبنحدد خط Cairo للموقع كله */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+html, body { height: 100%; }
+
+/* تنسيق جسم الصفحة الأساسي عشان المحتوى يفرش صح ويبقى مرن */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* بنشيل الخط اللي بيبقى تحت اللينكات عشان شكلها يبقى أنضف */
+a { text-decoration: none; color: inherit; }
+
+/* الـ Navbar (شريط التنقل).. ثابت فوق دايمًا (fixed) عشان يبقى قدام اليوزر في أي وقت */
+nav {
+  background-color: var(--white);
+  padding: 15px 5%;
+  box-shadow: var(--shadow-sm);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+}
+
+/* بنرص لينكات المنيو جنب بعضها بمسافات متساوية */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 40px; 
+  align-items: center;
+  margin: 0 auto;
+  justify-content: center;
+  flex-wrap: nowrap; /* مهم جدًا عشان ما ينزلوش تحت بعض */
+}
+/* تنسيق اللينك نفسه وتقل الخط */
+nav ul li a {
+  font-weight: 600; color: var(--text-dark);
+  position: relative; padding: 5px 0; transition: var(--transition);letter-spacing: 0.5px
+}
+
+/* الخط الأزرق اللي بيظهر تحت اللينك لما نعدي عليه بالماوس (Hover Effect) */
+nav ul li a::after {
+  content: ''; position: absolute; width: 0; height: 2px;
+  bottom: 0; left: 0; background-color: var(--primary-color);
+  transition: var(--transition);
+}
+
+nav ul li a:hover { color: var(--primary-color); }
+nav ul li a:hover::after { width: 100%; }
+
+/* بنخفي زرار المنيو بتاع الموبايل في الشاشات الكبيرة */
+#menu-toggle { display: none; }
+
+.hamburger {
+  display: none; font-size: 28px; cursor: pointer;
+  color: var(--text-dark); user-select: none;
+}
+
+/* --- تنسيق سويتش الدارك مود (الزرار اللي بنقلب منه المود) --- */
+label.switch {
+  position: relative; 
+  display: inline-block;
+  width: 60px; 
+  height: 30px; 
+  margin-left: 15px;
+  direction: ltr !important; /* خليناه يسار ليمين عشان يشتغل صح في العربي والإنجليزي */
+}
+
+label.switch input { opacity: 0; width: 0; height: 0; }
+
+/* شكل السكة اللي بيتحرك عليها الزرار */
+.slider {
+  position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc; border-radius: 30px; transition: 0.4s;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 7px; font-size: 14px;
+  direction: ltr !important;
+}
+
+/* الدايرة البيضاء اللي بتتحرك يمين وشمال */
+.slider::before {
+  content: ""; position: absolute; height: 24px; width: 24px;
+  left: 3px !important; 
+  right: auto !important;
+  bottom: 3px; background-color: white; border-radius: 50%;
+  transition: 0.4s;
+  z-index: 2;
+}
+
+/* لما نفعل الزرار، الخلفية بتبقى سودة والدايرة بتتحرك لليمين */
+label.switch input:checked + .slider { background-color: #333; }
+label.switch input:checked + .slider::before { transform: translateX(30px) !important; }
+
+.icon { z-index: 1; pointer-events: none; }
+.sun { color: gold; }
+.moon { color: #f1f5f9; }
+
+/* --- الجزء ده خاص بالواجهات الكبيرة (Hero Sections) اللي في أول كل صفحة --- */
+.hero, .page-header, .header, header:not(.top-nav), body > h1, .cta-block, .packages h2, .left {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #ffffff !important;
+}
+
+.hero, .page-header, .header, header:not(.top-nav), body > h1 {
+  padding: 120px 20px 80px; text-align: center;
+  border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
+  margin-bottom: 40px; box-shadow: var(--shadow-md);
+}
+
+.hero h1, .page-header h1, .header h1, .header h2, header:not(.top-nav) h1, body > h1 {
+  font-size: 2.8rem; margin-bottom: 10px; font-weight: 700; color: #ffffff !important;
+}
+
+.hero p, .page-header p, .header p, header:not(.top-nav) p {
+  font-size: 1.1rem; opacity: 0.9; color: #ffffff !important;
+}
+
+/* عنوان سيكشن الباقات في صفحة التحاليل */
+.packages h2 {
+  padding: 40px 20px; text-align: center; border-radius: 20px;
+  margin-bottom: 40px; box-shadow: var(--shadow-md);
+}
+
+/* مربع البحث الجميل اللي في صفحة الخدمات والنتائج */
+#searchInput {
+  display: block; width: 100%; max-width: 600px;
+  padding: 12px 20px; margin: 0 auto 40px;
+  border: 1px solid var(--border-color); border-radius: 10px;
+  font-size: 1rem; transition: var(--transition);
+  background-color: var(--white); box-shadow: var(--shadow-sm);
+}
+
+#searchInput:focus {
+  outline: none; border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.dark-mode #searchInput {
+  color: #ffffff; background-color: #1e1e1e; border-color: #333;
+}
+
+.dark-mode #searchInput::placeholder { color: #ccc; }
+
+/* الكروت (Cards) بشكل عام.. بنستخدمها في الخدمات، القيم، الباقات، وحتى صفحة "عن المعمل" */
+.card, .about-card, .value-card, .package, .info-card, .health-tip, .search-card, details, .container {
+  background: var(--white); border-radius: 15px; padding: 25px;
+  box-shadow: var(--shadow-md); transition: var(--transition);
+  border: 1px solid var(--border-color);
+}
+
+/* حركة بسيطة لما نقف على أي كارت إنه يترفع لفوق شوية */
+.card:hover, .about-card:hover, .value-card:hover, .package:hover, .info-card:hover, details:hover, .container:hover {
+  transform: translateY(-10px); box-shadow: var(--shadow-hover);
+  border-color: var(--primary-color);
+}
+
+.dark-mode .card, .dark-mode .about-card, .dark-mode .value-card, .dark-mode .package, .dark-mode .info-card, .dark-mode .health-tip, .dark-mode .search-card, .dark-mode details, .dark-mode .container {
+  background-color: #1e1e1e; border-color: #333; color: #ffffff;
+}
+
+/* تنسيق الزراير الموحد في الموقع كله عشان يبقى فيه تناسق بجماليات الـ Hover */
+button, .btn-search, .btn-pdf, .btn-share, .cta-btns a, .right button, .card button {
+  background-color: var(--primary-color); color: var(--white);
+  border: none; padding: 10px 22px; border-radius: 8px;
+  font-size: 0.95rem; font-weight: 600; cursor: pointer;
+  transition: var(--transition); display: inline-block;
+  text-align: center; margin-top: 15px;
+}
+
+button:hover, .btn-search:hover, .btn-pdf:hover, .btn-share:hover, .cta-btns a:hover, .right button:hover, .card button:hover {
+  background-color: var(--secondary-color); transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(29, 78, 216, 0.3);
+}
+
+.btn-white { background-color: var(--white); color: var(--primary-color); }
+
+/* تنسيق خانات الكتابة (Inputs) والقوائم (Select).. مريحة للعين ومساحاتها واسعة */
+input, textarea, select {
+  width: 100%; padding: 10px 14px; margin-top: 6px; margin-bottom: 18px;
+  border: 1px solid var(--border-color); border-radius: 8px;
+  font-size: 0.9rem; transition: var(--transition);
+  background-color: var(--bg-main); color: var(--text-dark);
+}
+
+input:focus, textarea:focus {
+  outline: none; border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15); background-color: var(--white);
+}
+
+label { font-weight: 600; color: var(--text-dark); font-size: 0.85rem; }
+
+/* شريط الإحصائيات اللي في صفحة "عن المعمل" (About) */
+.stats-strip {
+  background-color: var(--white); padding: 40px 20px;
+  margin: -60px 5% 40px; border-radius: 15px;
+  box-shadow: var(--shadow-md); position: relative;
+}
+
+.dark-mode .stats-strip { background-color: #1e1e1e; border-color: #333; }
+
+/* بنرص الأرقام جنب بعضها وبنخليها تتعدل أوتوماتيك حسب حجم الشاشة */
+.stats-grid, .values-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px; text-align: center;
+}
+
+.stat-num { font-size: 2.5rem; font-weight: 700; color: var(--primary-color); }
+
+.sec-title { text-align: center; font-size: 2.2rem; margin: 40px 0 20px; color: var(--text-dark); }
+
+/* توزيع الكروت في صفحة الخدمات والتحاليل */
+.cards, .packages-cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px; padding: 20px 5%;
+}
+
+.card.highlight { background-color: var(--primary-color); color: var(--white) !important; }
+.card.highlight h3, .card.highlight p { color: var(--white) !important; }
+
+/* داشبورد النتائج أو البروفايل */
+.dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 20px 5%; }
+
+/* أشرطة التحميل (Progress Bars) اللي بنستخدمها في عرض تقدم التحليل أو النتائج */
+.bar {
+  background-color: var(--border-color); border-radius: 10px;
+  height: 10px; margin-bottom: 15px; overflow: hidden;
+}
+
+.fill {
+  background-color: var(--primary-color); height: 100%;
+  border-radius: 10px; transition: width 1s ease-in-out;
+}
+
+/* عناصر قائمة المواعيد أو النشاطات */
+.activity-item {
+  padding: 12px; border-left: 4px solid var(--primary-color);
+  background: var(--accent-color); margin-bottom: 12px;
+  border-radius: 0 8px 8px 0; font-size: 0.85rem; transition: var(--transition);
+}
+
+.activity-item:hover { transform: translateX(8px); }
+
+/* الحاوية الكبيرة لصفحات تسجيل الدخول وإنشاء الحساب */
+.container {
+  display: flex; max-width: 1000px; margin: 100px auto 50px;
+  padding: 0; overflow: hidden;
+}
+
+/* الجزء الشمال اللي فيه كلام تشجيعي وصورة */
+.container .left {
+  flex: 1; padding: 50px; display: flex; flex-direction: column; justify-content: center;
+}
+
+.container .left h1, .container .left p { color: #ffffff !important; }
+
+/* الجزء اليمين اللي فيه الفورم (الإيميل والباسورد) */
+.container .right { flex: 1; padding: 50px; }
+
+.features .box {
+  background: rgba(255, 255, 255, 0.1); padding: 10px 20px;
+  margin-top: 10px; border-radius: 8px; backdrop-filter: blur(5px);
+  transition: var(--transition); color: #ffffff !important;
+}
+
+.features .box:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
+
+/* اللينك اللي بيبدل بين "تسجيل" و "دخول" في الفورم */
+div.switch {
+  margin-top: 20px; text-align: center; font-size: 0.9rem;
+  display: block !important; width: 100%; color: var(--text-dark);
+}
+
+div.switch a { color: var(--primary-color); font-weight: 700; transition: var(--transition); }
+div.switch a:hover { color: var(--secondary-color); text-decoration: underline; }
+
+main { flex: 1; }
+main section { max-width: 800px; margin: 0 auto 30px; }
+
+/* قائمة الخدمات المنسدلة (Accordion) اللي بنستخدم فيها Details و Summary */
+details { cursor: pointer; margin-bottom: 15px; }
+summary h2 { display: inline; font-size: 1.2rem; margin: 0; }
+
+summary {
+  font-size: 1.2rem; font-weight: 600; color: var(--primary-color);
+  outline: none; list-style: none; display: flex;
+  align-items: center; justify-content: space-between;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+/* سهم القائمة اللي بيلف لما نفتحها */
+summary::after {
+  content: '▼'; font-size: 1rem; color: var(--primary-color);
+  transition: transform 0.3s ease;
+}
+
+details[open] summary::after { transform: rotate(180deg); }
+
+details p { font-size: 0.9rem; color: var(--text-light); }
+details label { font-size: 0.8rem; }
+details input, details textarea, details select { font-size: 0.85rem; padding: 8px 12px; }
+
+/* حركة انزلاق ناعمة لما نفتح سيكشن في الخدمات */
+details p, details form {
+  margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-color);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* توزيع صفحة "تواصل معنا" (Contact) */
+.grid-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; padding: 40px 5%; }
+.input-row { display: flex; gap: 20px; }
+.input-row .field { flex: 1; }
+
+/* منطقة رفع الملفات (زي الروشتة أو التحاليل القديمة) */
+.upload-zone {
+  border: 2px dashed var(--primary-color); padding: 30px; text-align: center;
+  border-radius: 10px; margin-bottom: 20px; background-color: var(--accent-color);
+  cursor: pointer; transition: var(--transition);
+}
+
+.upload-zone:hover { background-color: rgb(191, 219, 254); transform: scale(1.02); }
+.dark-mode .upload-zone { background-color: #1a2332; }
+.dark-mode .upload-zone:hover { background-color: #22304a; }
+
+/* كارت البحث عن النتائج في صفحة النتائج (Results) */
+.search-card { max-width: 700px; margin: -50px auto 40px; position: relative; z-index: 10; }
+.action-row { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
+
+/* حاوية خريطة جوجل ماب في صفحة الاتصال */
+.map-container {
+  margin-top: 20px; border-radius: 15px; overflow: hidden;
+  border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);
+  transition: var(--transition); background: var(--white);
+}
+
+.map-container:hover { box-shadow: var(--shadow-md); border-color: var(--primary-color); }
+.map-container iframe { width: 100%; height: 300px; border: none; display: block; }
+.map-info { padding: 15px; text-align: center; border-bottom: 1px solid var(--border-color); }
+
+/* بلوك الـ CTA (Call to Action) اللي في آخر كل صفحة عشان نشجع اليوزر يحجز */
+.cta-block {
+  padding: 50px 20px; margin: 40px 5%; text-align: center;
+  border-radius: 20px; box-shadow: var(--shadow-md);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.cta-block h3 { font-size: 1.8rem; margin-bottom: 10px; color: #ffffff !important; }
+.cta-block p { font-size: 1rem; margin-bottom: 25px; opacity: 0.9; color: #ffffff !important; }
+
+.cta-btns { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+
+.cta-btns a {
+  background-color: var(--white); color: var(--primary-color);
+  padding: 10px 22px; border-radius: 8px; font-weight: 600;
+  transition: var(--transition);
+}
+
+.cta-btns a:hover { background-color: var(--secondary-color); color: var(--white); transform: scale(1.05); }
+
+/* الفوتر (تذييل الصفحة).. دايمًا في الآخر وشكله متناسق مع الهيدر */
+footer, .footer {
+  margin-top: auto; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #ffffff; text-align: center; padding: 35px 20px;
+  margin-top: 40px; font-size: 0.9rem; border-top: none;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+}
+
+footer a, .footer-links a {
+  color: var(--accent-color); margin: 0 10px;
+  font-weight: 500; transition: var(--transition);
+}
+
+footer a:hover, .footer-links a:hover { color: var(--white); text-decoration: underline; }
+
+/* قاعدة عامة للدارك مود عشان نتأكد إن كل النصوص بقت بيضاء وواضحة */
+.dark-mode p, .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6, .dark-mode span, .dark-mode a, .dark-mode label, .dark-mode li {
+  color: #ffffff !important;
+}
+
+/* --- تعديلات الموبايل والـ Responsive لجميع الصفحات --- */
+@media (max-width: 768px) {
+  nav { justify-content: space-between; padding: 10px 5%; }
+  .hamburger { display: block; } /* بنظهر علامة المنيو */
+  
+  /* المنيو في الموبايل بتنزل تحت الناف بار وبتاخد عرض الصفحة كلها */
+  nav ul {
+    display: none; width: 100%; flex-direction: column; position: absolute;
+    top: 60px; left: 0; background-color: var(--bg-main); padding: 20px 0;
+    box-shadow: var(--shadow-md); border-top: 1px solid var(--border-color); gap: 15px;
+  }
+  
+  /* لما نضغط على الهمبرجر، المنيو بتظهر */
+  #menu-toggle:checked ~ ul { display: flex; }
+  nav ul li { width: 100%; text-align: center; }
+  label.switch { margin: 0 auto; }
+  
+  .hero, .page-header, .header, header:not(.top-nav) { padding: 100px 15px 60px; }
+  .hero h1, .page-header h1, .header h1, header:not(.top-nav) h1, body > h1 { font-size: 2rem; }
+  .hero p, .page-header p { font-size: 0.9rem; }
+  
+  /* حل مشكلة صفحة الـ Login والكلام المختفي في الموبايل */
+  .container { flex-direction: column; margin: 80px 15px; }
+  .container .left { display: none; } /* بنخفي الجزء الشمال عشان نوفر مساحة */
+  .container .right { padding: 20px; width: 100%; flex: 1; }
+  
+  /* بنخلي العناصر تترص تحت بعضها في الموبايل بدل ما هي جنب بعضها */
+  .grid-layout { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+  .input-row { flex-direction: column; gap: 0; }
+  .dashboard { grid-template-columns: 1fr; padding: 15px; }
+  .cards, .packages-cards { grid-template-columns: 1fr; padding: 10px; }
+  .stats-strip { margin: 20px 10px; }
+  .cta-block { margin: 20px 10px; padding: 30px 15px; }
+  .cta-block h3 { font-size: 1.3rem; }
+  
+  #searchInput { width: 90%; }
+}
+
+/* --- تنسيق زرار تبديل اللغة (عربي / English) --- */
+nav ul li a.lang-switch::after {
+    display: none !important;
+}
+
+.lang-switch {
+    border: 2px solid var(--primary-color) !important;
+    padding: 5px 15px !important;
+    border-radius: 20px !important;
+    background-color: transparent !important;
+    transition: all 0.3s ease-in-out !important;
+    display: inline-block;
+    color: var(--text-dark);
+}
+
+.lang-switch:hover {
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
+    transform: scale(1.05);
+}
+
+.dark-mode .lang-switch {
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .lang-switch:hover {
+    background-color: #ffffff !important;
+    color: #1a2332 !important; 
+}
+
+/* التنسيق الخاص بحاوية رقم التليفون عشان كود الدولة يظهر جنب الرقم بشكل شيك */
+.phone-input-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.phone-input-container select {
+    width: 35% !important;
+    margin-bottom: 0 !important;
+    font-size: 0.85rem;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.phone-input-container input {
+    width: 65% !important;
+    margin-bottom: 0 !important;
+}
+
+/* قلب اتجاه كود الدولة في النسخة العربي */
+[dir="rtl"] .phone-input-container {
+    flex-direction: row;
+}
+
+.dark-mode .phone-input-container select {
+    background-color: #1e1e1e;
+    color: white;
+    border-color: #333;
+}
+
+/* تنسيق قائمة اختيار الوقت المفضل اللي ضفناها في صفحة الخدمات */
+.time-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--white);
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.dark-mode .time-select {
+    background-color: #1e1e1e;
+    color: white;
+    border-color: #333;
+}
+
+/* ===== LOGO IN NAVBAR ===== */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  position: static;
+}
+
+/* وضع اللوجو في اللغة الإنجليزية (شمال) */
+html[dir="ltr"] .logo {
+  left: 20px;
+  right: auto;
+}
+
+/* وضع اللوجو في اللغة العربية (يمين) */
+html[dir="rtl"] .logo {
+  right: 20px;
+  left: auto;
+}
+
+/* صورة اللوجو */
+.logo img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+/* اسم المعمل */
+.logo span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* --- تعديلات الموبايل والـ Responsive --- */
+@media (max-width: 768px) {
+  /* اللوجو في الموبايل */
+  .logo img {
+    height: 35px !important; /* صغرنا الطول عشان يناسب شاشة الموبايل */
+    width: auto; /* عشان يحافظ على أبعاده وما يتمطش */
+  }
+
+  .logo span {
+    font-size: 1.1rem; /* تصغير اسم BioScan شوية عشان المنيو تلاقي مكان[cite: 17] */
+  }
+
+  .logo {
+    gap: 8px; /* تقليل المسافة بين اللوجو والاسم في الموبايل[cite: 17] */
+    margin-left: 5px; /* زقة خفيفة من الشمال عشان ما يلزقش في حرف الشاشة[cite: 17] */
+  }
+
+  /* تأكيد إن الناف بار طوله يقل شوية في الموبايل عشان يوفر مساحة[cite: 17] */
+  nav {
+    height: 65px; 
+    padding: 0 15px; 
+  }
+}

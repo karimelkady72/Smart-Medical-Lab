@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+
+    <script src="Script.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- هنا بنفحص لو المستخدم كان مفعّل dark mode قبل كده ونرجع نفس الوضع -->
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
+</head>
+
+<body>
+
+  <!-- النافبار: قائمة التنقل بين صفحات الموقع -->
+  <nav>
+     <!-- اللوجو + اسم المعمل -->
+     <!-- عند الضغط عليه يتم استدعاء دالة goHome() للذهاب للصفحة الرئيسية حسب اللغة -->
+     <a href="#" class="logo" onclick="goHome()">
+       <!-- صورة اللوجو -->
+       <img src="logo.png" alt="BioScan Logo">
+       <!-- اسم الموقع / المعمل -->
+       <span>BioScan</span>
+     </a>
+
+    <!-- checkbox مخفي للتحكم في فتح وغلق القائمة في الموبايل -->
+    <input type="checkbox" id="menu-toggle">
+
+    <!-- زر الهامبرجر (☰) اللي بيظهر في الموبايل -->
+    <!-- مرتبط بالـ checkbox فوق عن طريق for -->
+    <label for="menu-toggle" class="hamburger">☰</label>
+
+    <!-- قائمة الروابط الأساسية -->
+    <ul>
+
+        <!-- رابط الصفحة الرئيسية -->
+        <li><a href="home.html">Home</a></li>
+
+        <!-- صفحة الخدمات -->
+        <li><a href="services.html">Services</a></li>
+
+        <!-- صفحة التحاليل والأسعار -->
+        <li><a href="tests.html">Tests & Prices</a></li>
+
+        <!-- صفحة النتائج -->
+        <li><a href="results.html">Results</a></li>
+
+        <!-- صفحة التواصل -->
+        <li><a href="contact.html">Contact</a></li>
+
+        <!-- صفحة عن المعمل -->
+        <li><a href="about.html">About</a></li>
+
+        <!-- صفحة تسجيل الدخول -->
+        <li><a href="login.html">Login</a></li>
+
+        <!-- زر تغيير اللغة إلى العربية -->
+        <!-- عند الضغط يتم استدعاء switchToArabic() -->
+        <li>
+            <a href="#" class="lang-switch" onclick="switchToArabic()">
+                عربي 🌐
+            </a>
+        </li>
+
+        <!-- زرار الثيم (Dark / Light Mode) -->
+        <li>
+            <label class="switch">
+                <!-- checkbox للتحكم في الوضع الليلي -->
+                <input type="checkbox" id="theme-toggle">
+
+                <!-- شكل السلايدر (زر التحويل) -->
+                <span class="slider">
+
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+
+                </span>
+            </label>
+        </li>
+
+    </ul>
+</nav>
+
+  <!-- عنوان الصفحة -->
+  <header>
+      <h1>Our Services</h1>
+      <p>Book your service easily</p>
+  </header>
+
+  <main>
+
+    <!-- قسم حجز التحاليل -->
+    <section>
+        <details>
+            <!-- details بيخلي القسم يفتح ويقفل بشكل accordion -->
+            <summary><h2>Lab Tests</h2></summary>
+
+            <p>Book any medical test from our lab</p>
+
+            <!-- فورم حجز التحليل -->
+            <form id="lab-form">
+                <!-- بيانات المستخدم -->
+                <label>Full Name</label>
+                <input type="text" required>
+
+                <label>Email</label>
+                <input type="email" required>
+
+                <label>Phone Number</label>
+                <input type="tel" required>
+
+                <!-- هنا اسم التحليل اللي بيتبعت للجافاسكريبت -->
+                <label>Test Type:</label>
+                <input type="text" id="test-type-input" required>
+
+                <!-- تاريخ ووقت الحجز -->
+                <label>Date</label>
+                <input type="date" required>
+
+                <label>Time:</label>
+                <input type="time" required>
+
+                <!-- زرار تأكيد الحجز -->
+                <button type="submit">Book Test</button>
+            </form>
+        </details>
+    </section>
+
+    <hr>
+
+    <!-- قسم حجز دكتور -->
+    <section>
+        <details>
+            <summary><h2>Doctor Appointment</h2></summary>
+
+            <p>Book an appointment with a specialist doctor</p>
+
+            <form id="doctor-form">
+                <label>Full Name:</label>
+                <input type="text" required>
+
+                <label>Email:</label>
+                <input type="email" required>
+
+                <label>Phone Number:</label>
+                <input type="tel" required>
+
+                <label>Specialty:</label>
+                <input type="text" required>
+
+                <label>Date:</label>
+                <input type="date" required>
+
+                <label>Time:</label>
+                <input type="time" required>
+
+                <button type="submit">Book Appointment</button>
+            </form>
+        </details>
+    </section>
+
+    <hr>
+
+    <!-- قسم الزيارة المنزلية -->
+    <section>
+        <details>
+            <summary><h2>Home Visit</h2></summary>
+
+            <p>We provide home sample collection service</p>
+
+            <form id="home-form">
+                <label>Full Name:</label>
+                <input type="text" required>
+
+                <label>Email:</label>
+                <input type="email" required>
+
+                <label>Phone Number:</label>
+                <input type="tel" required>
+
+                <label>Address:</label>
+                <input type="text" required>
+
+                <label>Date:</label>
+                <input type="date" required>
+
+                <label>Time:</label>
+                <input type="time" required>
+
+                <!-- التحاليل المطلوبة بيتكتبها المستخدم -->
+                <label>Requested Tests</label>
+                <textarea required></textarea>
+
+                <!-- رفع صورة روشتة لو موجودة -->
+                <label>Upload Prescription / Test Image (optinal)</label>
+                <input type="file">
+
+                <label>Preferred Time (10 AM - 10 PM)</label>
+
+                <!-- زر طلب الزيارة -->
+                <button type="submit">Request Visit</button>
+            </form>
+        </details>
+    </section>
+
+  </main>
+
+  <!-- الفوتر -->
+  <footer>
+      <hr>
+      <p>© 2026 Medical Lab. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

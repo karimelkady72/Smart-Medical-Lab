@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مواعيدي</title>
+
+  <link rel="stylesheet" href="style.css">
+  <!-- ربط ملف الـ CSS بتاع التصميم -->
+
+  <script src="Script.js"></script>
+  <!-- ربط الجافاسكريبت اللي فيه منطق الصفحة -->
+
+  <script>
+    if(localStorage.getItem("theme")==="dark")
+      document.documentElement.classList.add("dark-mode");
+  </script>
+  <!-- تفعيل الوضع الداكن لو المستخدم مختاره قبل كده -->
+</head>
+
+<body>
+
+   <nav>
+
+  <!-- اللوجو + اسم المعمل -->
+  <a href="#" class="logo" onclick="goHome()">
+    <img src="logo.png" alt="BioScan Logo">
+    <span>BioScan</span>
+  </a>
+
+  <!-- عنصر التحكم في المينيو (موبايل) -->
+  <input type="checkbox" id="menu-toggle">
+
+  <!-- زر الهامبرجر -->
+  <label for="menu-toggle" class="hamburger">☰</label>
+
+  <ul>
+
+      <li><a href="home-ar.html">الرئيسية</a></li>
+      <li><a href="services-ar.html">الخدمات</a></li>
+      <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
+      <li><a href="results-ar.html">النتائج</a></li>
+      <li><a href="contact-ar.html">تواصل معنا</a></li>
+      <li><a href="about-ar.html">عن المعمل</a></li>
+      <li><a href="login-ar.html">تسجيل الدخول</a></li>
+
+      <!-- تغيير اللغة -->
+      <li>
+          <a href="#" class="lang-switch" onclick="switchToEnglish()">
+              English 🌐
+          </a>
+      </li>
+
+      <!-- الوضع الليلي -->
+      <li>
+          <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider">
+                  <span class="icon sun">☀️</span>
+                  <span class="icon moon">🌙</span>
+              </span>
+          </label>
+      </li>
+
+  </ul>
+</nav>
+  <header class="header">
+    <h1>مواعيدك المحجوزة</h1>
+  </header>
+
+  <main style="padding: 20px 5%;">
+
+    <div id="appointment-list" class="card">
+        <!-- هنا الجافاسكريبت هيعرض المواعيد -->
+    </div>
+
+    <button onclick="localStorage.removeItem('myAppointments'); location.reload();" style="background: red; margin-top: 20px;">
+      مسح جميع المواعيد
+    </button>
+    <!-- مسح كل المواعيد المخزنة وإعادة تحميل الصفحة -->
+
+  </main>
+
+</body>
+</html>

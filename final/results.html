@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab Results</title>
+
+  <script src="Script.js"></script>
+  <!-- ربط ملف الجافاسكريبت المسؤول عن البحث وعرض النتائج -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- استدعاء خط Cairo لتحسين شكل الخطوط -->
+
+  <link rel="stylesheet" href="style.css">
+  <!-- ربط ملف التصميم الرئيسي -->
+
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
+  <!-- تفعيل الوضع الداكن حسب اختيار المستخدم -->
+</head>
+
+<body>
+
+  <nav>
+     <!-- اللوجو + اسم المعمل -->
+     <!-- عند الضغط عليه يتم استدعاء دالة goHome() للذهاب للصفحة الرئيسية حسب اللغة -->
+     <a href="#" class="logo" onclick="goHome()">
+       <!-- صورة اللوجو -->
+       <img src="logo.png" alt="BioScan Logo">
+       <!-- اسم الموقع / المعمل -->
+       <span>BioScan</span>
+     </a>
+
+    <!-- checkbox مخفي للتحكم في فتح وغلق القائمة في الموبايل -->
+    <input type="checkbox" id="menu-toggle">
+
+    <!-- زر الهامبرجر (☰) اللي بيظهر في الموبايل -->
+    <!-- مرتبط بالـ checkbox فوق عن طريق for -->
+    <label for="menu-toggle" class="hamburger">☰</label>
+
+    <!-- قائمة الروابط الأساسية -->
+    <ul>
+
+        <!-- رابط الصفحة الرئيسية -->
+        <li><a href="home.html">Home</a></li>
+
+        <!-- صفحة الخدمات -->
+        <li><a href="services.html">Services</a></li>
+
+        <!-- صفحة التحاليل والأسعار -->
+        <li><a href="tests.html">Tests & Prices</a></li>
+
+        <!-- صفحة النتائج -->
+        <li><a href="results.html">Results</a></li>
+
+        <!-- صفحة التواصل -->
+        <li><a href="contact.html">Contact</a></li>
+
+        <!-- صفحة عن المعمل -->
+        <li><a href="about.html">About</a></li>
+
+        <!-- صفحة تسجيل الدخول -->
+        <li><a href="login.html">Login</a></li>
+
+        <!-- زر تغيير اللغة إلى العربية -->
+        <!-- عند الضغط يتم استدعاء switchToArabic() -->
+        <li>
+            <a href="#" class="lang-switch" onclick="switchToArabic()">
+                عربي 🌐
+            </a>
+        </li>
+
+        <!-- زرار الثيم (Dark / Light Mode) -->
+        <li>
+            <label class="switch">
+                <!-- checkbox للتحكم في الوضع الليلي -->
+                <input type="checkbox" id="theme-toggle">
+
+                <!-- شكل السلايدر (زر التحويل) -->
+                <span class="slider">
+
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+
+                </span>
+            </label>
+        </li>
+
+    </ul>
+</nav>
+
+  <div class="page-header">
+    <!-- عنوان صفحة النتائج -->
+
+    <h1>Lab Results</h1>
+    <p>Enter your booking ID or name to view and download your results</p>
+  </div>
+
+  <main>
+
+    <div class="search-card">
+      <!-- كارد البحث عن النتيجة -->
+
+      <h2>Search for your result</h2>
+
+      <div class="input-row">
+        <!-- مدخلات البحث -->
+
+        <div class="field">
+          <label>Booking ID</label>
+          <input type="text" id="booking-id" placeholder="Example: NL-2024-0891" />
+        </div>
+
+        <div class="field">
+          <label>Or Patient Name</label>
+          <input type="text" id="patient-name" placeholder="Full name" />
+        </div>
+
+        <button class="btn-search" onclick="searchResult()">
+          View Result
+        </button>
+        <!-- زر تنفيذ البحث -->
+      </div>
+
+      <div id="error-msg">
+        <!-- رسالة تظهر عند عدم وجود نتيجة -->
+        No result found. Please check your data.
+      </div>
+    </div>
+
+    <div class="action-row">
+      <!-- أزرار التعامل مع النتيجة -->
+
+      <button class="btn-pdf" onclick="printPage()">Download PDF</button>
+      <button class="btn-share" onclick="alert('Link copied!')">Share</button>
+      <button class="btn-share" onclick="window.print()">Print</button>
+    </div>
+
+  </main>
+
+  <footer>
+    All rights reserved © 2026 | <span>Medical Lab</span>
+  </footer>
+
+</body>
+</html>

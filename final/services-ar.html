@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الخدمات</title>
+    <script src="Script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
+</head>
+
+<body>
+
+  <nav>
+
+  <!-- اللوجو + اسم المعمل -->
+  <a href="#" class="logo" onclick="goHome()">
+    <img src="logo.png" alt="BioScan Logo">
+    <span>BioScan</span>
+  </a>
+
+  <!-- عنصر التحكم في المينيو (موبايل) -->
+  <input type="checkbox" id="menu-toggle">
+
+  <!-- زر الهامبرجر -->
+  <label for="menu-toggle" class="hamburger">☰</label>
+
+  <ul>
+
+      <li><a href="home-ar.html">الرئيسية</a></li>
+      <li><a href="services-ar.html">الخدمات</a></li>
+      <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
+      <li><a href="results-ar.html">النتائج</a></li>
+      <li><a href="contact-ar.html">تواصل معنا</a></li>
+      <li><a href="about-ar.html">عن المعمل</a></li>
+      <li><a href="login-ar.html">تسجيل الدخول</a></li>
+
+      <!-- تغيير اللغة -->
+      <li>
+          <a href="#" class="lang-switch" onclick="switchToEnglish()">
+              English 🌐
+          </a>
+      </li>
+
+      <!-- الوضع الليلي -->
+      <li>
+          <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider">
+                  <span class="icon sun">☀️</span>
+                  <span class="icon moon">🌙</span>
+              </span>
+          </label>
+      </li>
+
+  </ul>
+</nav>
+
+    <header>
+        <h1>خدماتنا</h1>
+        <p>احجز خدمتك بكل سهولة</p>
+    </header>
+
+    <main>
+        <section>
+            <details>
+                <summary><h2>تحاليل المعمل</h2></summary>
+                <p>احجز أي تحليل طبي من معملنا</p>
+                <form id="lab-form">
+                    <label>الاسم بالكامل</label><br>
+                    <input type="text" required><br><br>
+                    <label>البريد الإلكتروني</label><br>
+                    <input type="email" required><br><br>
+                    <label>رقم الهاتف</label><br>
+                    <input type="tel" required><br><br>
+                    <!-- الخانة دي بتتملي لوحدها لو اليوزر اختار باقة معينة من صفحة التحاليل -->
+                    <label>نوع التحليل:</label><br>
+                    <input type="text" id="test-type-input" required><br><br>
+                    <label>التاريخ</label><br>
+                    <input type="date" required><br><br>
+                     <label>الوقت</label><br>
+                    <input type="time" required><br><br>
+                    <button type="submit">احجز الموعد</button>
+                </form>
+            </details>
+        </section>
+
+        <hr>
+
+        <section>
+            <details>
+                <summary><h2>حجز دكتور</h2></summary>
+                <p>احجز موعد مع طبيب متخصص</p>
+                <form id="doctor-form">
+                    <label>الاسم بالكامل:</label><br>
+                    <input type="text" required><br><br>
+                    <label>البريد الإلكتروني:</label><br>
+                    <input type="email" required><br><br>
+                    <label>رقم الهاتف:</label><br>
+                    <input type="tel" required><br><br>
+                    <label>التخصص:</label><br>
+                    <input type="text" required><br><br>
+                    <label>التاريخ:</label><br>
+                    <input type="date" required><br><br>
+                    <label>الوقت:</label><br>
+                    <input type="time" required><br><br>
+                    <button type="submit">احجز الموعد</button>
+                </form>
+            </details>
+        </section>
+
+        <hr>
+
+        <section>
+            <details>
+                <summary><h2>زيارة منزلية</h2></summary>
+                <p>نوفر خدمة سحب العينات من المنزل</p>
+                <form id="home-form">
+                    <label>الاسم بالكامل:</label><br>
+                    <input type="text" required><br><br>
+                    <label>البريد الإلكتروني:</label><br>
+                    <input type="email" required><br><br>
+                    <label>رقم الهاتف:</label><br>
+                    <input type="tel" required><br><br>
+                    <label>العنوان:</label><br>
+                    <input type="text" required><br><br>
+                    <label>التاريخ:</label><br>
+                    <input type="date" required><br><br>
+                     <label>الوقت</label><br>
+                    <input type="time" required><br><br>
+                    <label>التحاليل المطلوبة</label><br>
+                    <textarea required></textarea><br><br>
+                    <!-- مكان رفع الملفات بيسمح للمريض يبعت صورة الروشتة عشان المعمل يجهز التحاليل -->
+                    <label>ارفع صورة الروشتة (اختياري)</label><br>
+                    <input type="file"><br><br>
+                    <button type="submit">اطلب زيارة</button>
+                </form>
+            </details>
+        </section>
+
+    </main>
+
+    <footer>
+        <hr>
+        <p>© ٢٠٢٦ المعمل الطبي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+</body>
+</html>

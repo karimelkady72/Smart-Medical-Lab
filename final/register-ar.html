@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إنشاء حساب</title>
+
+  <script src="Script.js"></script>
+  <!-- ربط ملف الجافاسكريبت المسؤول عن التفاعل والتحقق -->
+
+  <link rel="stylesheet" href="style.css">
+  <!-- ربط ملف التصميم الأساسي -->
+
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
+  <!-- تفعيل الوضع الداكن لو المستخدم مختاره قبل كده -->
+</head>
+
+<body>
+
+ <nav>
+
+  <!-- اللوجو + اسم المعمل -->
+  <a href="#" class="logo" onclick="goHome()">
+    <img src="logo.png" alt="BioScan Logo">
+    <span>BioScan</span>
+  </a>
+
+  <!-- عنصر التحكم في المينيو (موبايل) -->
+  <input type="checkbox" id="menu-toggle">
+
+  <!-- زر الهامبرجر -->
+  <label for="menu-toggle" class="hamburger">☰</label>
+
+  <ul>
+
+      <li><a href="home-ar.html">الرئيسية</a></li>
+      <li><a href="services-ar.html">الخدمات</a></li>
+      <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
+      <li><a href="results-ar.html">النتائج</a></li>
+      <li><a href="contact-ar.html">تواصل معنا</a></li>
+      <li><a href="about-ar.html">عن المعمل</a></li>
+      <li><a href="login-ar.html">تسجيل الدخول</a></li>
+
+      <!-- تغيير اللغة -->
+      <li>
+          <a href="#" class="lang-switch" onclick="switchToEnglish()">
+              English 🌐
+          </a>
+      </li>
+
+      <!-- الوضع الليلي -->
+      <li>
+          <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider">
+                  <span class="icon sun">☀️</span>
+                  <span class="icon moon">🌙</span>
+              </span>
+          </label>
+      </li>
+
+  </ul>
+</nav>
+  <div class="container">
+
+    <div class="left">
+      <!-- الجزء التعريفي في صفحة التسجيل -->
+
+      <div class="overlay">
+        <h1>أنشئ حسابك</h1>
+        <p>انضم إلينا وابدأ في إدارة خدماتك الصحية بسهولة.</p>
+
+        <div class="features">
+          <!-- مميزات النظام -->
+
+          <div class="box">نظام آمن</div>
+          <div class="box">وصول سهل</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <!-- فورم إنشاء الحساب -->
+
+      <h2>إنشاء حساب</h2>
+      <p class="sub">أنشئ حساب جديد</p>
+      
+      <form id="register-form" action="verify-ar.html">
+        <!-- فورم التسجيل وبيتحول لصفحة التحقق -->
+
+        <input type="text" placeholder="الاسم بالكامل" required>
+        <input type="email" placeholder="البريد الإلكتروني" required>
+        <input type="password" id="reg-password" placeholder="كلمة المرور" required>
+        <input type="password" id="reg-confirm" placeholder="تأكيد كلمة المرور" required>
+
+        <div class="phone-input-container">
+          <!-- اختيار كود الدولة + رقم الهاتف -->
+
+          <select id="country-code" onchange="updatePhoneLimit()">
+            <!-- تغيير طول الرقم حسب الدولة -->
+
+            <option value="+20" data-len="11">🇪🇬 +٢٠</option>
+            <option value="+966" data-len="9">🇸🇦 +٩٦٦</option>
+            <option value="+971" data-len="9">🇦🇪 +٩٧١</option>
+            <option value="+965" data-len="8">🇰🇼 +٩٦٥</option>
+          </select>
+
+          <input type="tel" id="phone-number" placeholder="رقم الهاتف"
+                 maxlength="11" minlength="11" required>
+        </div>
+
+        <button type="submit">إنشاء الحساب</button>
+        <!-- زرار إرسال البيانات -->
+      </form>
+
+      <div class="switch">
+        لديك حساب بالفعل؟ <a href="login-ar.html">تسجيل الدخول</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

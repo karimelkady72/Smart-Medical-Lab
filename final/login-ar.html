@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- عشان الصفحة تبقى responsive على كل الشاشات -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>تسجيل الدخول</title>
+
+  <!-- ملف الجافاسكريبت للتفاعل -->
+  <script src="Script.js"></script>
+
+  <!-- ملف التنسيق -->
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    // لو المستخدم كان مفعل الوضع الليلي قبل كدا بنرجعه تلقائي
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
+</head>
+<body>
+
+  <!-- شريط التنقل -->
+  <nav>
+
+  <!-- اللوجو + اسم المعمل -->
+  <a href="#" class="logo" onclick="goHome()">
+    <img src="logo.png" alt="BioScan Logo">
+    <span>BioScan</span>
+  </a>
+
+  <!-- عنصر التحكم في المينيو (موبايل) -->
+  <input type="checkbox" id="menu-toggle">
+
+  <!-- زر الهامبرجر -->
+  <label for="menu-toggle" class="hamburger">☰</label>
+
+  <ul>
+
+      <li><a href="home-ar.html">الرئيسية</a></li>
+      <li><a href="services-ar.html">الخدمات</a></li>
+      <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
+      <li><a href="results-ar.html">النتائج</a></li>
+      <li><a href="contact-ar.html">تواصل معنا</a></li>
+      <li><a href="about-ar.html">عن المعمل</a></li>
+      <li><a href="login-ar.html">تسجيل الدخول</a></li>
+
+      <!-- تغيير اللغة -->
+      <li>
+          <a href="#" class="lang-switch" onclick="switchToEnglish()">
+              English 🌐
+          </a>
+      </li>
+
+      <!-- الوضع الليلي -->
+      <li>
+          <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider">
+                  <span class="icon sun">☀️</span>
+                  <span class="icon moon">🌙</span>
+              </span>
+          </label>
+      </li>
+
+  </ul>
+</nav>
+
+  <!-- الكونتينر اللي شايل الصفحة كلها -->
+  <div class="container">
+
+    <!-- الجزء الشمال (تصميمي) -->
+    <div class="left">
+
+      <!-- طبقة فوق الصورة/الخلفية -->
+      <div class="overlay">
+
+        <h1>مرحباً بك في مستقبل الرعاية الصحية</h1>
+        <p>نجمع بين الدقة والتكنولوجيا المتقدمة لتقديم نتائج تحاليل دقيقة في بيئة آمنة وموثوقة.</p>
+
+        <!-- مميزات -->
+        <div class="features">
+          <div class="box">نتائج سريعة</div>
+          <div class="box">تكنولوجيا متقدمة</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- الجزء اليمين (الفورم) -->
+    <div class="right">
+
+      <h2>تسجيل الدخول</h2>
+      <p class="sub">ادخل لحسابك بسهولة</p>
+
+      <!-- فورم تسجيل الدخول -->
+      <form action="home-ar.html">
+
+        <!-- إدخال البريد أو الهاتف -->
+        <input type="email" placeholder="البريد الإلكتروني أو الهاتف" required>
+
+        <!-- إدخال كلمة المرور -->
+        <input type="password" placeholder="كلمة المرور" required>
+
+        <!-- زر تسجيل الدخول -->
+        <button type="submit">دخول</button>
+
+      </form>
+
+      <!-- لينك لإنشاء حساب -->
+      <div class="switch">
+        ليس لديك حساب؟ <a href="register-ar.html">إنشاء حساب</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

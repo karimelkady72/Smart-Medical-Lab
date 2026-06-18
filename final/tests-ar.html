@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التحاليل والأسعار</title>
+  <script src="Script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
+</head>
+<body>
+
+  <nav>
+
+  <!-- اللوجو + اسم المعمل -->
+  <a href="#" class="logo" onclick="goHome()">
+    <img src="logo.png" alt="BioScan Logo">
+    <span>BioScan</span>
+  </a>
+
+  <!-- عنصر التحكم في المينيو (موبايل) -->
+  <input type="checkbox" id="menu-toggle">
+
+  <!-- زر الهامبرجر -->
+  <label for="menu-toggle" class="hamburger">☰</label>
+
+  <ul>
+
+      <li><a href="home-ar.html">الرئيسية</a></li>
+      <li><a href="services-ar.html">الخدمات</a></li>
+      <li><a href="tests-ar.html">التحاليل والأسعار</a></li>
+      <li><a href="results-ar.html">النتائج</a></li>
+      <li><a href="contact-ar.html">تواصل معنا</a></li>
+      <li><a href="about-ar.html">عن المعمل</a></li>
+      <li><a href="login-ar.html">تسجيل الدخول</a></li>
+
+      
+      <li>
+          <a href="#" class="lang-switch" onclick="switchToEnglish()">
+              English 🌐
+          </a>
+      </li>
+
+      <!-- الوضع الليلي -->
+      <li>
+          <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider">
+                  <span class="icon sun">☀️</span>
+                  <span class="icon moon">🌙</span>
+              </span>
+          </label>
+      </li>
+
+  </ul>
+</nav>
+
+  <h1>التحاليل الطبية</h1>
+  <input type="text" id="searchInput" placeholder="ابحث ......">
+
+  <div class="cards">
+    <!-- الكروت دي هي اللي بتختفي وتظهر في البحث بناءً على الكلام اللي جواها -->
+    <div class="card analysis">CBC - صورة دم كاملة</div>
+    <div class="card analysis">Glucose Test - تحليل سكر</div>
+    <div class="card analysis">Cholesterol - دهون</div>
+  </div>
+
+  <section class="packages">
+    <h2>باقات التحاليل</h2>
+    <div class="packages-cards">
+      <div class="package">
+        <span class="price">٤٥٠ ج.م</span>
+        <h3>وظائف الكبد</h3>
+        <p>مجموعة تحاليل لفحص صحة وكفاءة الكبد</p>
+        <!-- هنا بنبعت اسم الباقة بالعربي عشان تظهر في خانة "نوع التحليل" في صفحة الحجز أوتوماتيك -->
+        <button onclick="window.location.href='services-ar.html?test=وظائف الكبد'">احجز الآن</button>
+      </div>
+
+      <div class="package">
+        <span class="price">٣٥٠ ج.م</span>
+        <h3>السكر التراكمي</h3>
+        <p>يقيس متوسط مستويات السكر في الدم خلال ٣ أشهر</p>
+        <button onclick="window.location.href='services-ar.html?test=السكر التراكمي'">احجز الآن</button>
+      </div>
+
+      <div class="package">
+        <span class="price">٢٥٠ ج.م</span>
+        <h3>صورة دم كاملة (CBC)</h3>
+        <p>فحص شامل لمكونات الدم</p>
+        <button onclick="window.location.href='services-ar.html?test=صورة دم كاملة'">احجز الآن</button>
+      </div>
+
+      <div class="package">
+        <span class="price">٣٨٠ ج.م</span>
+        <h3>دهون الدم</h3>
+        <p>يقيس نسبة الكوليسترول والدهون في الدم</p>
+        <button onclick="window.location.href='services-ar.html?test=دهون الدم'">احجز الآن</button>
+      </div>
+
+      <div class="package">
+        <span class="price">٦٠٠ ج.م</span>
+        <h3>فيتامين د</h3>
+        <p>يقيس مستويات فيتامين د في الجسم</p>
+        <button onclick="window.location.href='services-ar.html?test=فيتامين د'">احجز الآن</button>
+      </div>
+
+      <div class="package">
+        <span class="price">٣٠٠ ج.م</span>
+        <h3>الغدة الدرقية (TSH)</h3>
+        <p>يحلل نشاط وكفاءة الغدة الدرقية</p>
+        <button onclick="window.location.href='services-ar.html?test=الغدة الدرقية'">احجز الآن</button>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

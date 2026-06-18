@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=.8">
+    <title>Verify Account</title>
+    <script src="/Script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        /* السكريبت ده بيخطف الثيم بتاعك من الـ LocalStorage أول ما تفتح الصفحة عشان لو كنت على الدارك مود يلحق يغيرها قبل ما عينك تزغلل. */
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
+    <style>
+        /* التنسيقات دي معمولة بس لصفحة التفعيل عشان تظبط شكل الـ 4 مربعات بتوع الكود والمسافات اللي بينهم. */
+        .verify-code-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        /* هنا خلينا المربعات مقاسها 50px في 50px وخلينا الخط تقيل وفي النص عشان يبقى واضح لليوزر. */
+        .verify-code-inputs input {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+        }
+        /* الحركة دي بتعمل ظل أزرق خفيف لما اليوزر يقف على المربع عشان يعرف هو بيكتب فين حالياً. */
+        .verify-code-inputs input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+        }
+        .resend-text {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+        .resend-text a {
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+     <nav>
+     <!-- اللوجو + اسم المعمل -->
+     <!-- عند الضغط عليه يتم استدعاء دالة goHome() للذهاب للصفحة الرئيسية حسب اللغة -->
+     <a href="#" class="logo" onclick="goHome()">
+       <!-- صورة اللوجو -->
+       <img src="logo.png" alt="BioScan Logo">
+       <!-- اسم الموقع / المعمل -->
+       <span>BioScan</span>
+     </a>
+
+    <!-- checkbox مخفي للتحكم في فتح وغلق القائمة في الموبايل -->
+    <input type="checkbox" id="menu-toggle">
+
+    <!-- زر الهامبرجر (☰) اللي بيظهر في الموبايل -->
+    <!-- مرتبط بالـ checkbox فوق عن طريق for -->
+    <label for="menu-toggle" class="hamburger">☰</label>
+
+    <!-- قائمة الروابط الأساسية -->
+    <ul>
+
+        <!-- رابط الصفحة الرئيسية -->
+        <li><a href="home.html">Home</a></li>
+
+        <!-- صفحة الخدمات -->
+        <li><a href="services.html">Services</a></li>
+
+        <!-- صفحة التحاليل والأسعار -->
+        <li><a href="tests.html">Tests & Prices</a></li>
+
+        <!-- صفحة النتائج -->
+        <li><a href="results.html">Results</a></li>
+
+        <!-- صفحة التواصل -->
+        <li><a href="contact.html">Contact</a></li>
+
+        <!-- صفحة عن المعمل -->
+        <li><a href="about.html">About</a></li>
+
+        <!-- صفحة تسجيل الدخول -->
+        <li><a href="login.html">Login</a></li>
+
+        <!-- زر تغيير اللغة إلى العربية -->
+        <!-- عند الضغط يتم استدعاء switchToArabic() -->
+        <li>
+            <a href="#" class="lang-switch" onclick="switchToArabic()">
+                عربي 🌐
+            </a>
+        </li>
+
+        <!-- زرار الثيم (Dark / Light Mode) -->
+        <li>
+            <label class="switch">
+                <!-- checkbox للتحكم في الوضع الليلي -->
+                <input type="checkbox" id="theme-toggle">
+
+                <!-- شكل السلايدر (زر التحويل) -->
+                <span class="slider">
+
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+
+                </span>
+            </label>
+        </li>
+
+    </ul>
+</nav>
+
+    <div class="container" style="max-width: 600px; margin-top: 120px;">
+        <div class="right" style="padding: 40px;">
+            <h2 style="text-align: center; margin-bottom: 10px;">Verification Code</h2>
+            <p class="sub" style="text-align: center; margin-bottom: 30px;">
+                We have sent a 4-digit code to your email/phone. Please enter it below.
+            </p>
+
+            <!-- هنا الفورم مربوط بـ "onsubmit" عشان نطلع رسالة تأكيد لليوزر قبل ما نحوله لصفحة تسجيل الدخول. -->
+            <form action="login.html" onsubmit="return alert('Account verified successfully! Please login.');">
+                
+                <div class="verify-code-inputs">
+                    <!-- الـ maxlength="1" دي عشان المربع مياخدش أكتر من رقم واحد بس، والـ onkeyup بتنادي الدالة اللي بتنقلنا للمربع اللي بعده. -->
+                    <input type="text" maxlength="1" required autocomplete="off" onkeyup="moveToNext(this, 'box2')">
+                    <input type="text" id="box2" maxlength="1" required autocomplete="off" onkeyup="moveToNext(this, 'box3')">
+                    <input type="text" id="box3" maxlength="1" required autocomplete="off" onkeyup="moveToNext(this, 'box4')">
+                    <input type="text" id="box4" maxlength="1" required autocomplete="off">
+                </div>
+
+                <button type="submit" style="width: 100%;">Verify & Continue</button>
+            </form>
+
+            <div class="resend-text">
+                Didn't receive the code? <a onclick="alert('A new code has been sent.')">Resend</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* الدالة دي هي اللي بتشوف إنت كتبت كام حرف، وأول ما توصل للحد الأقصى بتبعتك للمربع اللي بعده أوتوماتيك. */
+        function moveToNext(current, nextFieldID) {
+            if (current.value.length >= current.maxLength) {
+                document.getElementById(nextFieldID).focus();
+            }
+        }
+    </script>
+</body>
+
+</html>

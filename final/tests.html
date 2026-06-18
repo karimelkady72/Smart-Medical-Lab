@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tests & Prices</title>
+  <script src="Script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    /* الحتة دي بتخلي الموقع يفتكر المود اللي كنت عليه (لايت ولا دارك) ويطبقه فوراً أول ما الصفحة تفتح */
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
+</head>
+<body>
+   <nav>
+     <!-- اللوجو + اسم المعمل -->
+     <!-- عند الضغط عليه يتم استدعاء دالة goHome() للذهاب للصفحة الرئيسية حسب اللغة -->
+     <a href="#" class="logo" onclick="goHome()">
+       <!-- صورة اللوجو -->
+       <img src="logo.png" alt="BioScan Logo">
+       <!-- اسم الموقع / المعمل -->
+       <span>BioScan</span>
+     </a>
+
+    <!-- checkbox مخفي للتحكم في فتح وغلق القائمة في الموبايل -->
+    <input type="checkbox" id="menu-toggle">
+
+    <!-- زر الهامبرجر (☰) اللي بيظهر في الموبايل -->
+    <!-- مرتبط بالـ checkbox فوق عن طريق for -->
+    <label for="menu-toggle" class="hamburger">☰</label>
+
+    <!-- قائمة الروابط الأساسية -->
+    <ul>
+
+        <!-- رابط الصفحة الرئيسية -->
+        <li><a href="home.html">Home</a></li>
+
+        <!-- صفحة الخدمات -->
+        <li><a href="services.html">Services</a></li>
+
+        <!-- صفحة التحاليل والأسعار -->
+        <li><a href="tests.html">Tests & Prices</a></li>
+
+        <!-- صفحة النتائج -->
+        <li><a href="results.html">Results</a></li>
+
+        <!-- صفحة التواصل -->
+        <li><a href="contact.html">Contact</a></li>
+
+        <!-- صفحة عن المعمل -->
+        <li><a href="about.html">About</a></li>
+
+        <!-- صفحة تسجيل الدخول -->
+        <li><a href="login.html">Login</a></li>
+
+        <!-- زر تغيير اللغة إلى العربية -->
+        <!-- عند الضغط يتم استدعاء switchToArabic() -->
+        <li>
+            <a href="#" class="lang-switch" onclick="switchToArabic()">
+                عربي 🌐
+            </a>
+        </li>
+
+        <!-- زرار الثيم (Dark / Light Mode) -->
+        <li>
+            <label class="switch">
+                <!-- checkbox للتحكم في الوضع الليلي -->
+                <input type="checkbox" id="theme-toggle">
+
+                <!-- شكل السلايدر (زر التحويل) -->
+                <span class="slider">
+
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+
+                </span>
+            </label>
+        </li>
+
+    </ul>
+</nav>
+  <h1>Laboratory Tests</h1>
+  <!-- الـ ID ده هو اللي بنمسكه في الجافاسكريبت عشان نفلتر التحاليل اللي تحت وإنت بتكتب في المربع -->
+  <input type="text" id="searchInput" placeholder="Search ......">
+  <div class="cards">
+    <!-- الـ class اللي اسمه (analysis) هو "العلامة" اللي بتعرف الكود إن العنصر ده يدخل معانا في عملية البحث -->
+    <div class="card analysis">CBC - Complete Blood Count</div>
+    <div class="card analysis">Glucose Test - تحليل سكر</div>
+    <div class="card analysis">Cholesterol - دهون</div>
+  </div>
+  <section class="packages">
+    <h2>Test Packages</h2>
+    <div class="packages-cards">
+      <div class="package">
+        <span class="price">EGP 450</span>
+        <h3>Liver Profile</h3>
+        <p>A group of tests to check liver health and function</p>
+        <!-- الزرار ده بيبعت اسم التحليل في اللينك (test=اسم_التحليل) عشان صفحة الخدمات تملأ البيانات لوحدها أول ما تفتح -->
+        <button onclick="window.location.href='services.html?test=Liver Profile'">Book Now</button>
+      </div>
+      <div class="package">
+        <span class="price">EGP 350</span>
+        <h3>HbA1c</h3>
+        <p>Measures average blood sugar levels over the past 3 months</p>
+        <button onclick="window.location.href='services.html?test=HbA1c'">Book Now</button>
+      </div>
+      <div class="package">
+        <span class="price">EGP 250</span>
+        <h3>Complete Blood Count (CBC)</h3>
+        <p>A comprehensive test for blood components</p>
+        <button onclick="window.location.href='services.html?test=Complete Blood Count (CBC)'">Book Now</button>
+      </div>
+      <div class="package">
+        <span class="price">EGP 380</span>
+        <h3>Lipid Profile</h3>
+        <p>Measures cholesterol and blood lipids</p>
+        <button onclick="window.location.href='services.html?test=Lipid Profile'">Book Now</button>
+      </div>
+      <div class="package">
+        <span class="price">EGP 600</span>
+        <h3>Vitamin D</h3>
+        <p>Measures Vitamin D levels in the body</p>
+        <button onclick="window.location.href='services.html?test=Vitamin D'">Book Now</button>
+      </div>
+      <div class="package">
+        <span class="price">EGP 300</span>
+        <h3>TSH (Thyroid Stimulating Hormone)</h3>
+        <p>Analyzes thyroid gland activity</p>
+        <button onclick="window.location.href='services.html?test=TSH (Thyroid Stimulating Hormone)'">Book Now</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
